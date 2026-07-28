@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ &amp; support | GreenGenius Terra One</title>
+    <meta name="description" content="Answers about Terra One — watering, supported plants, Wi-Fi and Bluetooth, power, subscriptions, shipping, warranty and repairs.">
+    <link rel="canonical" href="https://greengenius.co/faq.html">
+    <meta name="theme-color" content="#10201a">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%2310201a'/><path d='M50 22 33 43a22 22 0 1 0 34 0z' fill='%23b8f14a'/></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,700;0,800;1,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a href="#main" class="visually-hidden">Skip to content</a>
+
+<nav id="navbar">
+    <a href="index.html" class="logo">GreenGenius</a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="navLinks">
+        <a href="product.html">Terra One</a>
+        <a href="technology.html">Technology</a>
+        <a href="app.html">App</a>
+        <a href="about.html">Company</a>
+        <a href="faq.html" class="active" aria-current="page">FAQ</a>
+    </div>
+    <a href="product.html#reserve" class="btn nav-cta">Reserve — $89</a>
+</nav>
+
+<main id="main">
+
+    <header class="page-hero">
+        <div class="container">
+            <span class="reveal pill">FAQ &amp; support</span>
+            <h1 class="reveal" style="margin-top:22px;">Questions, <span style="font-style:italic;">answered properly.</span></h1>
+            <p class="reveal">Including the ones with awkward answers. If something here isn't covered, email us — a person on the team replies.</p>
+        </div>
+    </header>
+
+    <section>
+        <div class="container faq">
+
+            <div class="faq-item reveal">
+                <button class="faq-q" aria-expanded="false"><span>Do I really never have to water it?</span><span class="plus" aria-hidden="true">+</span></button>
+                <div class="faq-a"><p>You refill the 1.2-litre reservoir roughly once a month — the app warns you about a week ahead. Terra One handles the actual watering, dosing when the soil crosses your plant's moisture threshold rather than on a schedule. Refill interval depends heavily on plant size, room temperature and light; a large monstera in a warm south-facing room might need refilling every three weeks, a snake plant every two months.</p></div>
+            </div>
+
+            <div class="faq-item reveal">
+                <button class="faq-q" aria-expanded="false"><span>Which plants does it work with?</span><span class="plus" aria-hidden="true">+</span></button>
+                <div class="faq-a"><p>The library ships with 42 profiles covering most common houseplants — monstera, pothos, snake plant, fiddle-leaf fig, peace lily, philodendrons, herbs and most succulents. You pick the species once and it loads the matching moisture band and light range. A custom profile lets you set the band yourself for anything unlisted. It is <em>not</em> suitable for cacti in free-draining mineral mixes, for aquatic plants, or for anything over about 1.2 m tall, where the pot becomes a tipping hazard.</p></div>
+            </div>
+
+            <div class="faq-item reveal">
+                <button class="faq-q" aria-expanded="false"><span>Does it need Wi-Fi?</span><span class="plus" aria-hidden="true">+</span></button>
+                <div class="faq-a"><p>No. Sensing and watering run entirely on the device using the stored profile, with no network at all. Wi-Fi only adds remote monitoring and over-the-air firmware updates. Bluetooth handles setup and nearby control. If your router dies, the planter carries on and buffers ninety days of readings to sync later.</p></div>
+            </div>
+
+            <div class="faq-item reveal">
+                <button class="faq-q" aria-expanded="false"><span>Is there a subscription?</span><span class="plus" aria-hidden="true">+</span></button>
+                <div class="faq-a"><p>No, and there won't be. You pay $89 once. The app is free, firmware updates are free for the life of the device, and no feature will be moved behind a paywall later. The only recurring cost is the optional nutrient cartridge, around $12 every six months, and you can run Terra One indefinitely without one.</p></div>
+            </div>
+
+            <div class="faq-item reveal">
+                <button class="faq-q" aria-expanded="false"><span>What is the "AI" actually doing?</span><span class="plus" aria-hidden="true">+</span></button>
+                <div class="faq-a"><p>A small regression model, trained on-device over your first two weeks, learns how fast your specific soil dries at a given temperature and humidity. That lets it project the drying curve forward and water before the plant hits stress rather than after, and lets it flag readings that deviate from the fitted model — usually a cracked pot or a root problem. There is no camera, no microphone and no large language model in the device. It cannot identify your plant by looking at it; you tell it the species once.</p></div>
+            </div>
+
+            <div class="faq-item reveal">
+                <button class="faq-q" aria-expanded="false"><span>How is it powered, and what does it cost to run?</span><span class="plus" aria-hidden="true">+</span></button>
+                <div class="faq-a"><p>USB-C into any 5 V phone charger. It draws roughly 0.4 W idle and 2.5 W in the few seconds it's pumping, which works out to well under a dollar a year in electricity. There's no battery to replace. The same port takes firmware updates if you'd rather not connect it to Wi-Fi at all.</p></div>
+            </div>
+
+            <div class="faq-item reveal">
+                <button class="faq-q" aria-expanded="false"><span>Can it overwater and flood my windowsill?</span><span class="plus" aria-hidden="true">+</span></button>
+                <div class="faq-a"><p>It could in earlier revisions, and it did — twice, in one pilot home, on hardware rev 2. The fix was making each dose verify itself: Terra One waits fifteen minutes after pumping, re-reads both moisture probes, and confirms the soil responded as expected. If it didn't, it stops and flags the discrepancy rather than dosing again. There's also a hard per-day volume cap in firmware. We've had no flooding reports across the pilot fleet since rev 3.</p></div>
+            </div>
+
+            <div class="faq-item reveal">
+                <button class="faq-q" aria-expanded="false"><span>Can I run more than one?</span><span class="plus" aria-hidden="true">+</span></button>
+                <div class="faq-a"><p>Yes. The app manages any number of planters from one list, each with its own species profile, history and notification settings. They don't need to be on the same network.</p></div>
+            </div>
+
+            <div class="faq-item reveal">
+                <button class="faq-q" aria-expanded="false"><span>When does it ship, and could that slip?</span><span class="plus" aria-hidden="true">+</span></button>
+                <div class="faq-a"><p>Q4 2026 for the founder's edition, US only. Honestly: it could slip. Injection-mould tooling and FCC/CE radio certification are both still in progress, and either can add weeks. We'd rather say that now than send a cheerful update in November. If the date moves, everyone holding a reservation gets an email explaining what happened and why, and reservations can be cancelled at any point.</p></div>
+            </div>
+
+            <div class="faq-item reveal">
+                <button class="faq-q" aria-expanded="false"><span>What's the warranty, and what if it breaks after that?</span><span class="plus" aria-hidden="true">+</span></button>
+                <div class="faq-a"><p>Two years on the hardware. Beyond that, we stock spare pumps, probes and cartridges for seven years from launch and sell them at cost. The base opens with a T10 Torx driver and we publish the repair guides — nothing is glued shut. Within warranty we repair or replace; email <a href="mailto:support@greengenius.co" class="link">support@greengenius.co</a>.</p></div>
+            </div>
+
+            <div class="faq-item reveal">
+                <button class="faq-q" aria-expanded="false"><span>What happens to my planter if GreenGenius shuts down?</span><span class="plus" aria-hidden="true">+</span></button>
+                <div class="faq-a"><p>It keeps working. Watering already runs entirely on-device and never requires our servers. We've also committed that if we wind down, the final firmware release will strip the cloud dependency altogether so the app talks to the planter over Bluetooth indefinitely. That commitment is written into our terms, not just stated here.</p></div>
+            </div>
+
+            <div class="faq-item reveal">
+                <button class="faq-q" aria-expanded="false"><span>Do you ship outside the US?</span><span class="plus" aria-hidden="true">+</span></button>
+                <div class="faq-a"><p>Not for the first run. The founder's edition is US-only because we'll only hold FCC certification at launch. European shipping is planned for 2027 once CE certification and EU distribution are in place. Join the mailing list and we'll tell you when that's real rather than planned.</p></div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Support -->
+    <section class="section-dark center">
+        <div class="container">
+            <span class="reveal eyebrow on-dark">Still stuck?</span>
+            <h2 class="reveal" style="font-size:clamp(1.9rem,4.2vw,2.8rem); margin-bottom:18px;">Email a person.</h2>
+            <p class="reveal" style="max-width:520px; margin:0 auto 32px; color:var(--text-inverse);">We're nine people and we answer our own support mail. Expect a reply within one business day.</p>
+            <div class="reveal cta-actions">
+                <a href="mailto:support@greengenius.co" class="btn btn-accent">support@greengenius.co</a>
+            </div>
+            <p class="reveal" style="margin-top:26px; font-size:0.88rem; color:rgba(255,255,255,0.45);">Press enquiries: <a href="mailto:press@greengenius.co" class="link">press@greengenius.co</a> · Jobs: <a href="mailto:jobs@greengenius.co" class="link">jobs@greengenius.co</a></p>
+        </div>
+    </section>
+
+    <section class="cta-band">
+        <div class="container">
+            <h2 class="reveal">Ready when you are.</h2>
+            <p class="reveal">Free to reserve, no card required, cancel with one reply.</p>
+            <div class="reveal cta-actions">
+                <a href="product.html#reserve" class="btn btn-forest" style="border-radius:40px;padding:17px 40px;">Reserve for $89</a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <a href="index.html" class="logo">GreenGenius</a>
+                <p class="blurb">Connected hardware for keeping living things alive. Built in Portland, Oregon.</p>
+                <form class="field-row on-dark-form" data-signup data-endpoint="" style="margin-top:20px;" novalidate>
+                    <label for="footer-email" class="visually-hidden">Email address</label>
+                    <input type="email" id="footer-email" name="email" placeholder="Email for launch updates" autocomplete="email" required>
+                    <button class="btn btn-accent" style="padding:13px 20px;">Join</button>
+                </form>
+                <p class="form-msg" role="status" aria-live="polite"></p>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <a href="product.html">Terra One</a>
+                <a href="technology.html">Technology</a>
+                <a href="app.html">Companion app</a>
+                <a href="product.html#reserve">Reserve</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="about.html">About</a>
+                <a href="about.html#roadmap">Roadmap</a>
+                <a href="faq.html">FAQ &amp; support</a>
+                <a href="mailto:press@greengenius.co">Press</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <a href="mailto:hello@greengenius.co">hello@greengenius.co</a>
+                <a href="mailto:support@greengenius.co">support@greengenius.co</a>
+                <a href="legal.html#privacy">Privacy</a>
+                <a href="legal.html#terms">Terms</a>
+            </div>
+        </div>
+        <div class="footer-note">
+            <span>© <span data-year>2026</span> GreenGenius, Inc. · Portland, OR</span>
+            <span>Terra One ships Q4 2026. Specifications are pre-production and subject to change.</span>
+        </div>
+    </div>
+</footer>
+
+<script src="site.js" defer></script>
+</body>
+</html>
