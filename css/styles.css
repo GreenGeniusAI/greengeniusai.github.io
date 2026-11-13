@@ -133,16 +133,16 @@ h1, h2, h3 { font-weight: 700; letter-spacing: -0.035em; line-height: 0.95; text
   background: var(--terracotta); color: var(--cream);
   display: flex; flex-direction: column; overflow: hidden;
 }
-.reveal-stage .wrap { position: relative; flex: 1; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr auto; gap: 24px 48px; }
-.stage-top { grid-column: 1 / -1; grid-row: 1; display: flex; justify-content: space-between; gap: 24px; }
+.reveal-stage .wrap { position: relative; flex: 1; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-rows: auto 1fr auto; gap: 24px clamp(24px, 4vw, 64px); }
+.stage-top { grid-column: 1; grid-row: 1; display: flex; flex-wrap: wrap; gap: 6px 24px; }
 .stage-title { grid-column: 1; grid-row: 2; align-self: end; position: relative; z-index: 2; }
-.stage-object { grid-column: 2; grid-row: 2 / span 2; position: relative; min-height: 420px; }
+.stage-object { grid-column: 2; grid-row: 1 / span 3; position: relative; min-height: 460px; }
 .stage-foot { grid-column: 1; grid-row: 3; display: flex; flex-wrap: wrap; align-items: end; gap: 24px 40px; }
 .stage-foot .big-copy { max-width: 30ch; }
 
 /* The product plinth. The 3D model (js/showcase.js) mounts into .model-slot. */
 .plinth { position: absolute; left: 50%; bottom: 6%; width: min(92%, 560px); aspect-ratio: 5 / 1.25; transform: translateX(-50%); border-radius: 50%; background: var(--terracotta-deep); }
-.model-slot { position: absolute; inset: 0 0 12% 0; }
+.model-slot { position: absolute; inset: 0; }
 .model-slot canvas { width: 100% !important; height: 100% !important; cursor: grab; touch-action: none; }
 .model-slot canvas:active { cursor: grabbing; }
 .model-note { position: absolute; left: 50%; bottom: calc(6% + 6px); transform: translateX(-50%); text-align: center; color: var(--blush); white-space: nowrap; }
@@ -156,7 +156,7 @@ h1, h2, h3 { font-weight: 700; letter-spacing: -0.035em; line-height: 0.95; text
   .js .reveal-stage .plinth { transform: translateX(-50%) scaleX(0.2); opacity: 0; animation: plinth 1000ms 250ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
   .js .reveal-stage .stage-foot, .js .reveal-stage .stage-top, .js .reveal-stage .model-note { opacity: 0; animation: fade 700ms 700ms ease forwards; }
 }
-.stage-title { font-size: clamp(3.25rem, 7vw, 7.25rem); }
+.stage-title { font-size: clamp(3rem, 5.8vw, 6.75rem); }
 .stage-title .line { display: block; overflow: hidden; padding-bottom: 0.06em; white-space: nowrap; }
 @keyframes rise { to { transform: none; } }
 @keyframes plinth { to { transform: translateX(-50%) scaleX(1); opacity: 1; } }
@@ -414,7 +414,7 @@ select.input { appearance: none; background-image: url("data:image/svg+xml,%3Csv
 @media (max-width: 640px) { .gallery { grid-template-columns: 1fr; } }
 
 /* ---------- 3D pointers ---------- */
-.pointers { position: absolute; inset: 0 0 12% 0; pointer-events: none; opacity: 0; transition: opacity 500ms ease; z-index: 2; }
+.pointers { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity 500ms ease; z-index: 2; }
 .pointers.show { opacity: 1; }
 .pointers li { position: absolute; left: 0; top: 0; color: var(--cream); transition: opacity 200ms ease; }
 .pointers li.is-hidden { opacity: 0; }
@@ -515,4 +515,19 @@ select.input { appearance: none; background-image: url("data:image/svg+xml,%3Csv
   .team { grid-template-columns: 1fr 1fr; gap: 28px 14px; }
   .member h3 { font-size: 1.35rem; }
   .mini div { grid-template-columns: 1fr; gap: 2px; }
+}
+
+/* stage spacing (v6) */
+.reveal-stage { padding-bottom: clamp(32px, 5vh, 64px); }
+.stage-foot { padding-bottom: 8px; }
+.stage-object .plinth[hidden] { display: none; }
+.model-slot .stage-hint { position: absolute; left: 50%; bottom: 10px; transform: translateX(-50%); font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.02em; text-transform: uppercase; opacity: 0.7; pointer-events: none; white-space: nowrap; }
+@media (max-width: 1080px) {
+  .reveal-stage .wrap { grid-template-columns: 1fr; grid-template-rows: auto auto minmax(380px, 56vh) auto; }
+  .stage-top { grid-column: 1; }
+  .stage-object { grid-column: 1; grid-row: 3; min-height: 380px; }
+}
+@media (max-width: 640px) {
+  .reveal-stage .wrap { grid-template-rows: auto auto minmax(340px, 50vh) auto; }
+  .stage-object { min-height: 340px; }
 }

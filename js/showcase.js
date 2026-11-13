@@ -138,6 +138,7 @@ function setupPointers(THREE, slot, model) {
     update(camera, w, h) {
       model.updateMatrixWorld();
       normalMatrix.getNormalMatrix(model.matrixWorld);
+      const placed = [];                          // labels already put down this frame: {side, y}
       for (const it of items) {
         wp.copy(it.p).applyMatrix4(model.matrixWorld);
         wn.copy(it.n).applyMatrix3(normalMatrix).normalize();
@@ -150,7 +151,15 @@ function setupPointers(THREE, slot, model) {
         // Put the label on the side with more room, and let it wrap to fit there.
         const gap = w < 500 ? 36 : 58;
         const room = { left: x - gap - 4, right: w - x - gap - 4 };
-        const side = room.left > room.right ? "left" : "right";
+        const need = Math.min(it.li.lastChild.scrollWidth, 260);
+        let side = room.right >= need ? "right" : room.left >= need ? "left" : room.left > room.right ? "left" : "right";
+        // Two labels at nearly the same height on one side would overlap: use the other side.
+        const clash = (sd) => facing && placed.some((q) => q.side === sd && Math.abs(q.y - y) < 34);
+        if (clash(side)) {
+          const other = side === "right" ? "left" : "right";
+          if (!clash(other) && room[other] >= 90) side = other;
+        }
+        if (facing) placed.push({ side, y });
         it.li.dataset.side = side;
         it.li.lastChild.style.maxWidth = Math.max(room[side], 90) + "px";
       }
@@ -181,22 +190,46 @@ async function mount(slot, THREE, OrbitControls, RoomEnvironment) {
   model.add(content);
   scene.add(model);
 
-  // Frame on the pot itself; a plant (added after) may rise out of frame a little.
-  const box = new THREE.Box3().setFromObject(model);
-  const size = box.getSize(new THREE.Vector3());
-  const centre = box.getCenter(new THREE.Vector3());
-  const hasPlant = slot.dataset.modelPlant !== undefined;
-  if (hasPlant) centre.y += size.y * 0.28;     // lift the view so the leaves have room
-  model.position.sub(centre);
-  const radius = (size.length() / 2) * (hasPlant ? 1.22 : 1);
-  if (hasPlant) {
+  if (slot.dataset.modelPlant !== undefined) {
     // Soil sits 8 mm under the v3 rim (Z 230); inner radius there is about 99 mm.
     content.add(makePlant(THREE, 222, 98));
   }
 
-  const camera = new THREE.PerspectiveCamera(28, 1, radius / 50, radius * 20);
-  const dist = (radius / Math.sin(THREE.MathUtils.degToRad(14))) * 0.92;
-  camera.position.set(-dist * 0.5, dist * 0.22, dist * 0.84);
+  // A plinth in the scene itself, so the pot always stands on it at any size.
+  // Its colour is a darker shade of whatever stage it sits on.
+  const stageBg = getComputedStyle(slot.closest(".reveal-stage") || document.body).backgroundColor;
+  const plinthCol = new THREE.Color(stageBg).multiplyScalar(0.72);
+  const pBox = new THREE.Box3().setFromObject(content);
+  const plinth = new THREE.Mesh(
+    new THREE.CylinderGeometry(150, 150, 6, 96),
+    new THREE.MeshStandardMaterial({ color: plinthCol, roughness: 0.9, envMapIntensity: 0.4 })
+  );
+  plinth.rotation.x = Math.PI / 2;                 // cylinder axis to CAD Z
+  plinth.position.z = pBox.min.z - 3;
+  content.add(plinth);
+  const cssPlinth = slot.parentElement.querySelector(".plinth");
+  if (cssPlinth) cssPlinth.hidden = true;
+
+  // Centre the whole composition (pot, plant, plinth) on the orbit target.
+  const box = new THREE.Box3().setFromObject(model);
+  const size = box.getSize(new THREE.Vector3());
+  model.position.sub(box.getCenter(new THREE.Vector3()));
+  const reach = Math.max(size.x, size.z);            // widest footprint from any side
+
+  const camera = new THREE.PerspectiveCamera(26, 1, 5, 20000);
+  const viewDir = new THREE.Vector3(-0.5, 0.2, 0.84).normalize();
+  let fitDist = 1000;
+  // Distance at which the composition fills the frame, for the current aspect ratio.
+  const fit = () => {
+    const v = THREE.MathUtils.degToRad(camera.fov);
+    const h = 2 * Math.atan(Math.tan(v / 2) * camera.aspect);
+    fitDist = Math.max((size.y / 2) / Math.tan(v / 2), (reach / 2) / Math.tan(h / 2)) * 1.08 + reach / 2;
+    // Keep the visitor's current viewing angle; fall back to the default if it is unusable.
+    const cur = camera.position.clone().normalize();
+    const dir = Number.isFinite(cur.x + cur.y + cur.z) && cur.lengthSq() > 0.5 ? cur : viewDir.clone();
+    camera.position.copy(dir).multiplyScalar(fitDist);
+  };
+  camera.position.copy(viewDir);
 
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
@@ -224,10 +257,10 @@ async function mount(slot, THREE, OrbitControls, RoomEnvironment) {
     (groups[g] = groups[g] || []).push({ obj: o, home: o.position.clone() });
   });
   const STEPS = [                               // group, start ms, duration ms, offset in CAD mm [x, y, z]
-    ["shell", 0, 900, [0, 0, 110]],
-    ["drawer", 650, 900, [0, -170, 0]],
-    ["band", 1150, 800, [0, 0, 120]],
-    ["pot", 1450, 950, [0, 0, 160]],
+    ["shell", 0, 900, [0, 0, 80]],
+    ["drawer", 650, 900, [0, -130, 0]],
+    ["band", 1150, 800, [0, 0, 90]],
+    ["pot", 1450, 950, [0, 0, 120]],
   ];
   const playIntro = slot.dataset.modelIntro === "assemble" && !reduce && STEPS.some(([g]) => groups[g]);
   const ease = (t) => 1 - Math.pow(1 - Math.min(Math.max(t, 0), 1), 3);
@@ -246,15 +279,19 @@ async function mount(slot, THREE, OrbitControls, RoomEnvironment) {
   const settle = () => { if (pointers) pointers.show(); else controls.autoRotate = !reduce; };
   if (playIntro) place(0);
   else settle();
+  const startWide = () => { if (playIntro) camera.position.setLength(fitDist * 1.32); };
 
   const resize = () => {
     const { width, height } = slot.getBoundingClientRect();
+    if (width < 2 || height < 2) return;          // not laid out yet; the observer fires again
     renderer.setSize(width, height, false);
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
+    fit();
   };
   new ResizeObserver(resize).observe(slot);
   resize();
+  startWide();
   slot.classList.add("is-loaded");
 
   // Render only while on screen; the intro starts the first time it is seen.
@@ -263,6 +300,8 @@ async function mount(slot, THREE, OrbitControls, RoomEnvironment) {
     if (playIntro && introStart !== null && introStart !== -1) {
       const t = now - introStart;
       place(t);
+      // Start a little wider so the separated parts fit, and ease in as they assemble.
+      camera.position.setLength(fitDist * (1 + 0.32 * (1 - ease(t / INTRO_MS))));
       if (t > INTRO_MS) {
         settle();
         introStart = -1;                         // done; never replays
