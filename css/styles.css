@@ -399,3 +399,16 @@ select.input { appearance: none; background-image: url("data:image/svg+xml,%3Csv
 @media (max-width: 640px) {
   .form { grid-template-columns: 1fr; }
 }
+
+/* ---------- lifestyle gallery ---------- */
+.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 64px; }
+.gallery figure { margin: 0; }
+.gallery .wide { grid-column: 1 / -1; }
+.gallery img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; background: var(--sand); }
+.gallery .wide img { aspect-ratio: 16 / 9; }
+.gallery figcaption, .shot figcaption { display: flex; justify-content: space-between; gap: 12px; padding-top: 10px; border-top: 2px solid currentColor; margin-top: 10px; }
+.disclose { margin-top: 20px; font-size: 0.9rem; opacity: 0.7; }
+.shot { margin: 0; }
+.shot img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
+@media (max-width: 1080px) { .gallery { grid-template-columns: 1fr 1fr; } .gallery .wide { grid-column: 1 / -1; } }
+@media (max-width: 640px) { .gallery { grid-template-columns: 1fr; } }

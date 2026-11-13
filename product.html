@@ -11,12 +11,14 @@
   <meta property="og:title" content="Our Product | GreenGenius">
   <meta property="og:description" content="The GreenGenius pot: a reservoir, a pump and five sensors built in. In development.">
   <meta property="og:url" content="https://greengeniusai.github.io/product.html">
+  <meta property="og:image" content="https://greengeniusai.github.io/images/lifestyle/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#c2552e">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='20' cy='16' r='9' fill='%231e3a2b'/%3E%3Ccircle cx='12' cy='16' r='9' fill='%23c2552e'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Familjen+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@1&display=swap">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css?v=4">
   <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
@@ -48,18 +50,18 @@
 <main id="main">
   <section class="reveal-stage f-forest">
     <div class="wrap">
-      <div class="stage-top tag"><span>Our Product</span><span>Enclosure design in progress</span></div>
+      <div class="stage-top tag"><span>Our Product</span><span>v3 prototype, shown in 3D</span></div>
       <h1 class="stage-title display">
           <span class="line"><span>GreenGenius</span></span>
           <span class="line"><span><span class="serif">pot.</span></span></span>
       </h1>
       <div class="stage-object">
         <div class="plinth" aria-hidden="true"></div>
-        <div class="model-slot" data-model-src="" data-model-label="GreenGenius pot, interactive 3D model. Drag to rotate."></div>
-        <p class="model-note tag">3D model in production</p>
+        <div class="model-slot" data-model-src="models/greengenius-v3.glb" data-model-intro="assemble" data-model-label="GreenGenius pot, interactive 3D model of the v3 design. Drag to rotate."></div>
+        <p class="model-note tag">Loading 3D model</p>
       </div>
       <div class="stage-foot">
-        <p class="big-copy">A reservoir, a pump and five sensors, built into the pot. Plant it, choose its care type, keep the reservoir filled.</p>
+        <p class="big-copy">A tapered pot on a pull-out water drawer, with five sensors and a pump built in. Plant it, choose its care type, top up the drawer when asked.</p>
         <a class="btn btn-solid" href="#features">What it does <span class="arr" aria-hidden="true">→</span></a>
       </div>
     </div>
@@ -75,6 +77,25 @@
         <div class="row"><span class="num">01</span><h3>Monitors the plant's conditions.</h3><p>Soil moisture from two probes, plus light, air temperature and humidity, measured throughout the day.</p></div>
         <div class="row"><span class="num">02</span><h3>Waters from its own reservoir.</h3><p>When moisture drops below the plant's band, the pump delivers a dose to the roots, then the soil is measured again.</p></div>
         <div class="row"><span class="num">03</span><h3>Looks after its water supply.</h3><p>The level sensor reports what's left, asks for a refill in time, and keeps the pump from running dry.</p></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="field f-sand">
+    <div class="wrap asym">
+      <figure class="shot"><img src="images/lifestyle/balcony.jpg" srcset="images/lifestyle/balcony-sm.jpg 564w, images/lifestyle/balcony.jpg 1128w" sizes="(max-width: 1080px) 100vw, 500px" width="1128" height="1400" alt="GreenGenius pot with rosemary on a city balcony at golden hour" loading="lazy" decoding="async"><figcaption class="tag"><span>Visualisation, v3 design</span><span>Balcony</span></figcaption></figure>
+      <div>
+        <p class="eyebrow tag">Indoors or out</p>
+        <h2 class="h2">Built for the balcony too.</h2>
+        <p class="copy" style="margin-top:24px">v3 was designed with outdoor use in mind. The electronics sit in a sealed bay, and everything that has to breathe or drain does it away from the rain.</p>
+        <dl class="ledger" style="margin-top:36px">
+          <div class="ledger-row"><dt>Drainage</dt><dd>Slots at the back of the pot, weep holes at the back of the shell</dd><dd class="part">Away from drawer</dd></div>
+          <div class="ledger-row"><dt>Power</dt><dd>USB-C cable exits underneath the base</dd><dd class="part">Out of the rain</dd></div>
+          <div class="ledger-row"><dt>Air sensor</dt><dd>Shaded chamber with louvres, outside the seal</dd><dd class="part">No direct sun</dd></div>
+          <div class="ledger-row"><dt>Material</dt><dd>PETG for prototypes, ASA for long-term outdoor use</dd><dd class="part">Same files</dd></div>
+        </dl>
+        <p class="note">The bay seal has not been tested yet.</p>
       </div>
     </div>
   </section>
@@ -127,7 +148,7 @@
     <div class="footer-base"><span>© <span data-year>2026</span> GreenGenius</span><span>In development. Specifications may change.</span></div>
   </div>
 </footer>
-<script src="js/site.js" defer></script>
-<script type="module" src="js/showcase.js"></script>
+<script src="js/site.js?v=4" defer></script>
+<script type="module" src="js/showcase.js?v=4"></script>
 </body>
 </html>
