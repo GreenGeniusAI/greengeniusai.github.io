@@ -293,7 +293,7 @@
       var endpoint = form.getAttribute("data-endpoint");
 
       if (!endpoint) {
-        say("Email us at hello@greengenius.co and we'll add you to the list.", "error");
+        say("Sign-ups open soon. This form isn't connected yet.", "error");
         return;
       }
 
@@ -311,7 +311,7 @@
           say("You're on the list. We'll be in touch before units ship.", "success");
         })
         .catch(function () {
-          say("Something went wrong. Email hello@greengenius.co instead.", "error");
+          say("Something went wrong. Please try again in a moment.", "error");
         })
         .finally(function () {
           button.disabled = false;
