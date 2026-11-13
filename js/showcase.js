@@ -1,11 +1,11 @@
 /* GreenGenius — product showcase
-   Any .stage with a data-model-src attribute becomes an interactive 3D view.
+   Any element with a data-model-src attribute (the .model-slot on the product stage) becomes an interactive 3D view.
    Until a model is set, the stage shows its static image or empty state and
    this file loads nothing.
 
    Usage:
-     <div class="stage" data-model-src="models/pot.stl">            one STL
-     <div class="stage" data-model-src="models/a.stl, models/b.stl"
+     <div class="model-slot" data-model-src="models/pot.stl">            one STL
+     <div class="model-slot" data-model-src="models/a.stl, models/b.stl"
           data-model-colors="#e8e6df, #2b2d2c">                       several parts
    STL is assumed to be in millimetres with Z up (CAD convention).
    Three.js is fetched from a CDN only when a model is present. */
@@ -13,7 +13,7 @@
 // jsDelivr's +esm builds rewrite the add-ons' bare `import "three"` to the same
 // pinned build, so no import map is needed and only one copy of three loads.
 const CDN = "https://cdn.jsdelivr.net/npm/three@0.160.0";
-const stages = [...document.querySelectorAll(".stage[data-model-src]")].filter((s) => s.dataset.modelSrc.trim());
+const stages = [...document.querySelectorAll("[data-model-src]")].filter((s) => s.dataset.modelSrc.trim());
 
 if (stages.length && webglAvailable()) {
   const [THREE, { STLLoader }, { OrbitControls }] = await Promise.all([
@@ -87,7 +87,7 @@ async function mount(stage, THREE, STLLoader, OrbitControls) {
   controls.autoRotateSpeed = 0.8;
   controls.addEventListener("start", () => { controls.autoRotate = false; });
 
-  stage.querySelectorAll("img, .stage-empty").forEach((el) => el.remove());
+  stage.querySelectorAll("img, .stage-empty").forEach((el) => el.remove()); // the .model-note sibling hides itself via CSS once the slot has content
   stage.appendChild(renderer.domElement);
   renderer.domElement.setAttribute("aria-label", stage.dataset.modelLabel || "Interactive 3D model. Drag to rotate, scroll or pinch to zoom.");
   renderer.domElement.setAttribute("role", "img");

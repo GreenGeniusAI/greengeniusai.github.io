@@ -4,29 +4,29 @@
   "use strict";
 
   /* ---------------- Mobile menu ---------------- */
-  var nav = document.querySelector(".site-nav");
-  var toggle = document.querySelector(".nav-toggle");
+  var nav = document.querySelector(".nav");
+  var toggle = document.querySelector(".burger");
   if (nav && toggle) {
     var setMenu = function (open) {
       toggle.setAttribute("aria-expanded", String(open));
-      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-      nav.classList.toggle("menu-open", open);
+      toggle.textContent = open ? "Close" : "Menu";
+      nav.classList.toggle("open", open);
       document.body.style.overflow = open ? "hidden" : "";
     };
     toggle.addEventListener("click", function () {
       setMenu(toggle.getAttribute("aria-expanded") !== "true");
     });
     // Closing on same-page anchor clicks; full navigations reload anyway.
-    nav.querySelectorAll(".nav-menu a").forEach(function (a) {
+    nav.querySelectorAll(".menu a").forEach(function (a) {
       a.addEventListener("click", function () { setMenu(false); });
     });
-    window.matchMedia("(min-width: 1021px)").addEventListener("change", function (e) {
+    window.matchMedia("(min-width: 1081px)").addEventListener("change", function (e) {
       if (e.matches) setMenu(false);
     });
   }
 
   /* ---------------- Dropdowns ---------------- */
-  var items = Array.prototype.slice.call(document.querySelectorAll(".nav-item"));
+  var items = Array.prototype.slice.call(document.querySelectorAll(".has-drop"));
   var closeAll = function (except) {
     items.forEach(function (it) {
       if (it === except) return;
@@ -41,7 +41,7 @@
       btn.setAttribute("aria-expanded", String(open));
     };
     // Hover opens on devices that can hover; click still works everywhere.
-    var hoverable = window.matchMedia("(hover: hover) and (min-width: 1021px)");
+    var hoverable = window.matchMedia("(hover: hover) and (min-width: 1081px)");
     var timer, hoverOpenedAt = 0;
     btn.addEventListener("click", function () {
       // A click that lands just after hover opened the menu means "open", not "toggle closed".
@@ -65,11 +65,11 @@
     });
   });
   document.addEventListener("click", function (e) {
-    if (!e.target.closest(".nav-item")) closeAll();
+    if (!e.target.closest(".has-drop")) closeAll();
   });
   document.addEventListener("keydown", function (e) {
     if (e.key !== "Escape") return;
-    var open = document.querySelector(".nav-item.open");
+    var open = document.querySelector(".has-drop.open");
     if (open) { closeAll(); open.querySelector("button").focus(); return; }
     if (toggle && toggle.getAttribute("aria-expanded") === "true") { toggle.click(); toggle.focus(); }
   });

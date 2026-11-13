@@ -3,164 +3,191 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GreenGenius — a plant pot that knows when to water</title>
-  <meta name="description" content="GreenGenius is a smart plant pot that measures soil moisture, light, temperature and humidity, and waters your plant from a built-in reservoir when the soil needs it.">
+  <title>GreenGenius | The plant pot that waters itself</title>
+  <meta name="description" content="GreenGenius is a smart plant pot with two soil probes, light, temperature and humidity sensors, a reservoir and a pump. It waters when the soil needs it.">
   <link rel="canonical" href="https://greengeniusai.github.io/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="GreenGenius">
-  <meta property="og:title" content="GreenGenius — a plant pot that knows when to water">
-  <meta property="og:description" content="GreenGenius is a smart plant pot that measures soil moisture, light, temperature and humidity, and waters your plant from a built-in reservoir when the soil needs it.">
+  <meta property="og:title" content="GreenGenius | The plant pot that waters itself">
+  <meta property="og:description" content="GreenGenius is a smart plant pot with two soil probes, light, temperature and humidity sensors, a reservoir and a pump. It waters when the soil needs it.">
   <meta property="og:url" content="https://greengeniusai.github.io/">
-  <meta name="theme-color" content="#ffffff">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%231a1c1b'/%3E%3Cpath d='M12 5.5c2.6 3 4.4 5.3 4.4 7.6a4.4 4.4 0 0 1-8.8 0c0-2.3 1.8-4.6 4.4-7.6z' fill='%23fff'/%3E%3C/svg%3E">
+  <meta name="theme-color" content="#c2552e">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='20' cy='16' r='9' fill='%231e3a2b'/%3E%3Ccircle cx='12' cy='16' r='9' fill='%23c2552e'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Familjen+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@1&display=swap">
   <link rel="stylesheet" href="css/styles.css">
+  <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<header class="site-nav">
-  <div class="container">
-    <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="6" fill="#1a1c1b"/><path d="M12 5.5c2.6 3 4.4 5.3 4.4 7.6a4.4 4.4 0 0 1-8.8 0c0-2.3 1.8-4.6 4.4-7.6z" fill="#fff"/></svg>GreenGenius</a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
-      <svg class="i-open" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 6h14M3 10h14M3 14h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-      <svg class="i-close" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5 5 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-    </button>
-    <nav class="nav-menu" id="navMenu" aria-label="Main">
-      <a class="nav-link" href="index.html" aria-current="page">Home</a>
-      <a class="nav-link" href="how-it-works.html">How It Works</a>
-      <div class="nav-item">
-        <button class="nav-link" aria-expanded="false" aria-controls="techMenu">Technology <svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="dropdown" id="techMenu">
-          <a href="technology.html#sensing"><strong>Sensing</strong><span>Soil, light, air and water level</span></a>
-          <a href="technology.html#water"><strong>Water system</strong><span>Reservoir, pump and drip stake</span></a>
-          <a href="technology.html#electronics"><strong>Electronics</strong><span>ESP32 board, power and connectivity</span></a>
-          <a href="technology.html#software"><strong>Software</strong><span>Care engine and companion app</span></a>
-          <a class="dropdown-all" href="technology.html#specs">Full specifications</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="brand-dot" aria-hidden="true"></span>GreenGenius</a>
+    <button class="burger" aria-expanded="false" aria-controls="menu">Menu</button>
+    <nav class="menu" id="menu" aria-label="Main">
+      <a class="menu-link" href="index.html" aria-current="page">Home</a>
+      <a class="menu-link" href="how-it-works.html">How It Works</a>
+      <div class="has-drop">
+        <button class="menu-link" aria-expanded="false" aria-controls="techDrop">Technology <svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+        <div class="drop" id="techDrop">
+          <a href="technology.html#sensing"><span class="n">01</span><strong>Sensing</strong><small>Soil, light, air, water level</small></a>
+          <a href="technology.html#water"><span class="n">02</span><strong>Water system</strong><small>Reservoir, pump, drip stake</small></a>
+          <a href="technology.html#electronics"><span class="n">03</span><strong>Electronics</strong><small>ESP32 board, power, wireless</small></a>
+          <a href="technology.html#software"><span class="n">04</span><strong>Software</strong><small>Care engine, companion app</small></a>
+          <a class="drop-all" href="technology.html#specs">Full specifications →</a>
         </div>
       </div>
-      <a class="nav-link" href="product.html">Our Product</a>
-      <a class="nav-link" href="about.html">About Us</a>
+      <a class="menu-link" href="product.html">Our Product</a>
+      <a class="menu-link" href="about.html">About Us</a>
     </nav>
-    <a class="btn btn--primary btn--sm nav-cta" href="product.html">Explore the product</a>
+    <a class="btn btn-solid nav-cta" href="product.html">Explore the product</a>
   </div>
 </header>
 <main id="main">
-
-  <section class="hero">
-    <div class="container split">
-      <div>
-        <span class="label">Smart plant pot</span>
-        <h1>A plant pot that knows when to water.</h1>
-        <p class="lead">GreenGenius measures the soil, light and air around your plant, and waters it from a built-in reservoir when the soil actually needs it.</p>
-        <div class="actions">
-          <a class="btn btn--primary" href="product.html">Explore the product</a>
-          <a class="link-arrow" href="how-it-works.html">How it works</a>
-        </div>
+  <section class="reveal-stage ">
+    <div class="wrap">
+      <div class="stage-top tag"><span>GreenGenius</span><span>Smart plant pot / prototype stage</span></div>
+      <h1 class="stage-title display">
+          <span class="line"><span>The pot</span></span>
+          <span class="line"><span>that waters</span></span>
+          <span class="line"><span><span class="serif">itself.</span></span></span>
+      </h1>
+      <div class="stage-object">
+        <div class="plinth" aria-hidden="true"></div>
+        <div class="model-slot" data-model-src="" data-model-label="GreenGenius pot, interactive 3D model. Drag to rotate."></div>
+        <p class="model-note tag">3D model in production</p>
       </div>
-      <div class="stage" data-model-src="" data-model-label="GreenGenius pot, interactive 3D model. Drag to rotate.">
-          <div class="stage-empty">
-            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5" y="8" width="30" height="24" rx="3"/><circle cx="14" cy="16" r="3"/><path d="m5 28 9-8 7 6 5-4 9 7"/></svg>
-            <span>Product imagery coming soon</span>
-          </div>
-        </div>
+      <div class="stage-foot">
+        <p class="big-copy">Two soil probes, three ambient sensors, a reservoir and a pump, run by a board we designed. It waters when the soil needs it, not when a calendar says so.</p>
+        <a class="btn btn-solid" href="product.html">Explore the product <span class="arr" aria-hidden="true">→</span></a>
+      </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container split split--top">
-      <div>
-        <span class="label">The problem</span>
-        <h2>Plants don't follow a schedule.</h2>
-        <p class="body-copy" style="margin-top:var(--s4)">Watering is the hardest part of plant care to get right. Too much and the roots sit wet; too little and the plant dries out. The difficulty is knowing what the soil needs on a given day.</p>
+  <section class="field f-forest" style="padding:56px 0 64px">
+    <div class="wrap">
+      <div class="facts">
+        <div class="fact"><b>2</b><span>soil-moisture probes in the root zone</span></div>
+        <div class="fact"><b>5</b><span>sensors, read on the pot itself</span></div>
+        <div class="fact"><b>1</b><span>circuit board, designed in-house</span></div>
+        <div class="fact"><b>0</b><span>watering schedules to remember</span></div>
       </div>
-      <ol class="points">
-        <li class="point"><span class="point-num">01</span><div><h3>Soil dries at a different rate every week.</h3><p>Light, season, heating, pot size and soil mix all change how fast water leaves the pot. A fixed watering day can't account for any of them.</p></div></li>
-        <li class="point"><span class="point-num">02</span><div><h3>Care advice is hard to act on.</h3><p>"Water when the top inch is dry" is good advice, but checking it by hand every day is easy to skip and hard to judge.</p></div></li>
-        <li class="point"><span class="point-num">03</span><div><h3>Problems show up late.</h3><p>Wilting and yellowing leaves appear days after the soil was too wet or too dry. By then, the cause is already in the past.</p></div></li>
+    </div>
+  </section>
+
+  <section class="field f-paper">
+    <div class="wrap">
+      <div class="lede-grid">
+        <div><p class="eyebrow tag">The problem</p><h2 class="h2">Watering is a <span class="serif">timing</span> problem.</h2></div>
+        <p class="big-copy">Too much and the roots sit wet. Too little and the plant dries out. The right amount changes every week, and nothing on the surface of the pot tells you which way it's going.</p>
+      </div>
+      <div class="rows" style="margin-top:72px">
+        <div class="row"><span class="num">01</span><h3>Soil never dries at the same rate twice.</h3><p>Light, season, heating, pot size and soil mix all change how fast water leaves a pot. A fixed watering day can't follow any of them.</p></div>
+        <div class="row"><span class="num">02</span><h3>Care advice is written in words.</h3><p>"Water when the top inch is dry" is sound advice. Checking it by hand, every day, for every plant, is where it falls apart.</p></div>
+        <div class="row"><span class="num">03</span><h3>The damage shows up late.</h3><p>Wilting and yellowing appear days after the soil went wrong. By the time you see it, the cause is already in the past.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="duo">
+    <div class="f-forest">
+      <p class="eyebrow tag">The pot does</p>
+      <h2 class="h2">The checking.</h2>
+      <ol>
+        <li><b>01</b><div><strong>Measures</strong><span>Soil moisture at two points, plus light, temperature, humidity and reservoir level.</span></div></li>
+        <li><b>02</b><div><strong>Decides</strong><span>Compares moisture with the plant's range, calibrated to this pot's own soil.</span></div></li>
+        <li><b>03</b><div><strong>Waters</strong><span>Pumps from the reservoir to a drip stake at the roots, then measures again.</span></div></li>
+      </ol>
+    </div>
+    <div class="f-blush">
+      <p class="eyebrow tag">You do</p>
+      <h2 class="h2">Almost nothing.</h2>
+      <ol>
+        <li><b>01</b><div><strong>Pot the plant</strong><span>Push in the soil probes and the drip stake, and fill the reservoir.</span></div></li>
+        <li><b>02</b><div><strong>Choose its care type</strong><span>"Top inch dry", "keep evenly moist" and so on. The pot sets its targets from it.</span></div></li>
+        <li><b>03</b><div><strong>Refill when asked</strong><span>The level sensor tells you before the reservoir runs out.</span></div></li>
       </ol>
     </div>
   </section>
 
-  <section class="section section--alt">
-    <div class="container">
-      <div class="section-head">
-        <span class="label">Introducing GreenGenius</span>
-        <h2>Care based on measurements, not memory.</h2>
-        <p class="body-copy">GreenGenius is a plant pot with sensors, a water reservoir and a small pump built in. It checks conditions throughout the day and handles watering on its own, so your part is choosing the plant and refilling the reservoir.</p>
+  <section class="field f-sand">
+    <div class="wrap asym">
+      <div class="sticky-col">
+        <p class="eyebrow tag">Engineering</p>
+        <h2 class="h2">Built from the board up.</h2>
+        <p class="copy" style="margin-top:24px">GreenGenius is not an off-the-shelf controller in a nicer pot. The circuit board, the sensor layout and the watering logic are our own, so hardware and software can be developed together.</p>
+        <div class="row-actions"><a class="text-link" href="technology.html">Full technology</a></div>
       </div>
-      <div class="columns">
-        <div class="column"><h3>It measures the soil.</h3><p>Two moisture probes sit in the root zone, alongside sensors for light, temperature and humidity.</p></div>
-        <div class="column"><h3>It waters itself.</h3><p>When moisture drops below your plant's range, the pump delivers water from the reservoir directly to the roots.</p></div>
-        <div class="column"><h3>It tells you what it needs.</h3><p>A water-level sensor tracks the reservoir, so you know when to refill before it runs dry.</p></div>
+      <div>
+        <div class="ledger-head tag"><span>Function</span><span>What it is</span><span>Part</span></div>
+        <dl class="ledger">
+          <div class="ledger-row"><dt>Soil moisture</dt><dd>Two capacitive probes, no exposed metal</dd><dd class="part">Capacitive v1.2</dd></div>
+          <div class="ledger-row"><dt>Light</dt><dd>Brightness through the day</dd><dd class="part">LDR</dd></div>
+          <div class="ledger-row"><dt>Air</dt><dd>Temperature and humidity</dd><dd class="part">DHT-series</dd></div>
+          <div class="ledger-row"><dt>Reservoir</dt><dd>How much water is left</dd><dd class="part">Level strip</dd></div>
+          <div class="ledger-row"><dt>Pump</dt><dd>3 V submersible, switched on the board</dd><dd class="part">AO3400A</dd></div>
+          <div class="ledger-row"><dt>Controller</dt><dd>Runs the loop; Wi-Fi and Bluetooth</dd><dd class="part">ESP32-WROOM-32E</dd></div>
+          <div class="ledger-row"><dt>Power</dt><dd>5 V over USB-C, also used for updates</dd><dd class="part">CH340C</dd></div>
+        </dl>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="section-head">
-        <span class="label">How it works</span>
-        <h2>Sense, decide, water.</h2>
-        <p class="body-copy">Sensors feed a controller on the pot's own circuit board. It compares readings with your plant's moisture range and runs the pump only when they fall short.</p>
+  <section class="field f-ink">
+    <div class="wrap lede-grid">
+      <div><p class="eyebrow tag">What's defensible</p><h2 class="h2">The hard part isn't the <span class="serif">pump.</span></h2></div>
+      <div>
+        <p class="big-copy">Published plant-care guidance is written in words, and the numeric datasets that exist mostly sit behind restrictive licences.</p>
+        <p class="copy" style="margin-top:20px">GreenGenius turns cited care categories into numeric bands for each sensor, calibrated to every pot's own wet and dry readings. That knowledge layer is what makes the hardware useful, and it is ours to build and own.</p>
+        <div class="row-actions"><a class="text-link" href="how-it-works.html#profiles">See the care bands</a></div>
       </div>
-      <ol class="cycle">
-        <li><h3>Measure</h3><p>Soil moisture, light, temperature, humidity and reservoir level are read on the device.</p></li>
-        <li><h3>Compare</h3><p>Moisture is checked against the range for your plant, scaled to this pot's own wet and dry readings.</p></li>
-        <li><h3>Water</h3><p>If the soil is below range, the pump moves water from the reservoir to a drip stake in the soil.</p></li>
-        <li><h3>Re-check</h3><p>The soil is measured again before any further watering, so slow-draining soil isn't watered twice.</p></li>
-      </ol>
-      <div class="actions"><a class="link-arrow" href="how-it-works.html">See the full system</a></div>
     </div>
   </section>
 
-  <section class="section section--alt cta">
-    <div class="container">
-      <h2>See what's inside GreenGenius.</h2>
-      <p>The sensors, the water system and the board that runs them, part by part.</p>
-      <div class="actions"><a class="btn btn--primary" href="product.html">Explore the product</a></div>
+  <section class="field f-cream">
+    <div class="wrap">
+      <div class="lede-grid">
+        <div><p class="eyebrow tag">Progress</p><h2 class="h2">Where we are.</h2></div>
+        <p class="big-copy">The electronics are designed. The enclosure and software are underway. Pilot units come next.</p>
+      </div>
+      <div class="track">
+        <div class="step done"><div class="step-bar"></div><span class="tag">Complete</span><h3>Circuit board</h3><p>Custom ESP32 board designed in KiCad. Manufacturing and assembly files prepared.</p></div>
+        <div class="step now"><div class="step-bar"></div><span class="tag">In progress</span><h3>Enclosure</h3><p>The pot, the reservoir and a sealed housing for the electronics.</p></div>
+        <div class="step now"><div class="step-bar"></div><span class="tag">In progress</span><h3>Software</h3><p>The care engine and the companion app.</p></div>
+        <div class="step"><div class="step-bar"></div><span class="tag">Next</span><h3>Pilot units</h3><p>Complete pots running in real homes.</p></div>
+      </div>
     </div>
   </section>
 
+  <section class="field f-terracotta">
+    <div class="wrap lede-grid">
+      <h2 class="h1">Let's grow this <span class="serif">together.</span></h2>
+      <div><p class="big-copy">We're talking with partners and investors as GreenGenius moves toward pilot units.</p><div class="row-actions"><a class="btn btn-solid" href="about.html">About the company <span class="arr" aria-hidden="true">→</span></a><a class="text-link" href="https://github.com/GreenGeniusAI">Follow on GitHub</a></div></div>
+    </div>
+  </section>
 </main>
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
       <div>
-        <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="6" fill="#ffffff"/><path d="M12 5.5c2.6 3 4.4 5.3 4.4 7.6a4.4 4.4 0 0 1-8.8 0c0-2.3 1.8-4.6 4.4-7.6z" fill="#141615"/></svg>GreenGenius</a>
-        <p class="footer-about">A plant pot that measures its soil and waters itself from its own reservoir.</p>
+        <a class="brand" href="index.html"><span class="brand-dot" aria-hidden="true"></span>GreenGenius</a>
+        <p class="footer-line">A plant pot that measures its soil and waters itself.</p>
       </div>
-      <div class="footer-col">
+      <div>
         <h2>Product</h2>
-        <ul>
-          <li><a href="product.html">Our Product</a></li>
-          <li><a href="how-it-works.html">How It Works</a></li>
-          <li><a href="technology.html#specs">Specifications</a></li>
-        </ul>
+        <ul><li><a href="product.html">Our Product</a></li><li><a href="how-it-works.html">How It Works</a></li><li><a href="technology.html#specs">Specifications</a></li></ul>
       </div>
-      <div class="footer-col">
+      <div>
         <h2>Technology</h2>
-        <ul>
-          <li><a href="technology.html#sensing">Sensing</a></li>
-          <li><a href="technology.html#water">Water system</a></li>
-          <li><a href="technology.html#electronics">Electronics</a></li>
-          <li><a href="technology.html#software">Software</a></li>
-        </ul>
+        <ul><li><a href="technology.html#sensing">Sensing</a></li><li><a href="technology.html#water">Water system</a></li><li><a href="technology.html#electronics">Electronics</a></li><li><a href="technology.html#software">Software</a></li></ul>
       </div>
-      <div class="footer-col">
+      <div>
         <h2>Company</h2>
-        <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="about.html#progress">Progress</a></li>
-          <li><a href="https://github.com/GreenGeniusAI">GitHub</a></li>
-        </ul>
+        <ul><li><a href="about.html">About Us</a></li><li><a href="about.html#progress">Progress</a></li><li><a href="https://github.com/GreenGeniusAI">GitHub</a></li></ul>
       </div>
     </div>
-    <div class="footer-base">
-      <span>© <span data-year>2026</span> GreenGenius</span>
-      <span>GreenGenius is in development. Specifications may change.</span>
-    </div>
+    <div class="footer-base"><span>© <span data-year>2026</span> GreenGenius</span><span>In development. Specifications may change.</span></div>
   </div>
 </footer>
 <script src="js/site.js" defer></script>
