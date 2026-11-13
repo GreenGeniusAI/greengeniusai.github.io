@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Technology | GreenGenius</title>
-  <meta name="description" content="GreenGenius sensors, water system, ESP32 electronics and care software, with full specifications.">
+  <meta name="description" content="GreenGenius sensors, water system, electronics and software, with full specifications.">
   <link rel="canonical" href="https://greengeniusai.github.io/technology.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="GreenGenius">
   <meta property="og:title" content="Technology | GreenGenius">
-  <meta property="og:description" content="GreenGenius sensors, water system, ESP32 electronics and care software, with full specifications.">
+  <meta property="og:description" content="GreenGenius sensors, water system, electronics and software, with full specifications.">
   <meta property="og:url" content="https://greengeniusai.github.io/technology.html">
   <meta property="og:image" content="https://greengeniusai.github.io/images/lifestyle/og.jpg">
   <meta name="twitter:card" content="summary_large_image">
@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Familjen+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@1&display=swap">
-  <link rel="stylesheet" href="css/styles.css?v=4">
+  <link rel="stylesheet" href="css/styles.css?v=7">
   <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
@@ -50,8 +50,8 @@
 <main id="main">
   <section class="page-hero f-sand">
     <div class="wrap">
-      <div><p class="eyebrow tag">Technology</p><h1 class="h1">What's inside, <span class="serif">part by part.</span></h1></div>
-      <p class="big-copy">Five sensors, a pump and a board we designed, plus the software that turns plant advice into targets.</p>
+      <div><p class="eyebrow tag">Technology</p><h1 class="h1">What's <span class="serif">inside.</span></h1></div>
+      <p class="big-copy">Sensors, water, electronics and software.</p>
     </div>
   </section>
 
@@ -59,81 +59,64 @@
     <div class="wrap">
       <div class="tabs" role="tablist" aria-label="Technology areas">
         <button class="tab" role="tab" id="tab-sensing" aria-controls="panel-sensing" aria-selected="true" data-hash="sensing">Sensing</button>
-        <button class="tab" role="tab" id="tab-water" aria-controls="panel-water" aria-selected="false" tabindex="-1" data-hash="water">Water system</button>
+        <button class="tab" role="tab" id="tab-water" aria-controls="panel-water" aria-selected="false" tabindex="-1" data-hash="water">Water</button>
         <button class="tab" role="tab" id="tab-electronics" aria-controls="panel-electronics" aria-selected="false" tabindex="-1" data-hash="electronics">Electronics</button>
         <button class="tab" role="tab" id="tab-software" aria-controls="panel-software" aria-selected="false" tabindex="-1" data-hash="software">Software</button>
       </div>
       <div class="panel" role="tabpanel" id="panel-sensing" aria-labelledby="tab-sensing" tabindex="0">
         <div class="asym">
-          <div>
-            <h2 class="h2">Five readings, taken on the pot.</h2>
-          <p class="copy">Two capacitive probes measure moisture in separate spots of the root zone, so one dry pocket can't decide for the whole pot. Capacitive sensing has no exposed metal in the soil, avoiding the corrosion that resistive probes suffer.</p>
-          <p class="copy">A light-dependent resistor records brightness through the day, a DHT-series sensor reads air temperature and humidity, and a level strip tracks the reservoir.</p>
-          </div>
+          <div><h2 class="h2">Five sensors.</h2><p class="big-copy" style="margin-top:24px">Two soil probes, plus light, air and water level.</p></div>
           <div>
         <div class="ledger-head tag"><span>Function</span><span>What it is</span><span>Part</span></div>
         <dl class="ledger">
           <div class="ledger-row"><dt>Soil moisture</dt><dd>Two probes, root zone</dd><dd class="part">Capacitive v1.2</dd></div>
-          <div class="ledger-row"><dt>Light</dt><dd>Brightness over the day</dd><dd class="part">LDR</dd></div>
-          <div class="ledger-row"><dt>Air</dt><dd>Temperature and humidity</dd><dd class="part">DHT-series</dd></div>
-          <div class="ledger-row"><dt>Water level</dt><dd>Reservoir remaining</dd><dd class="part">Resistive strip</dd></div>
+          <div class="ledger-row"><dt>Light</dt><dd>Under a translucent cap</dd><dd class="part">LDR</dd></div>
+          <div class="ledger-row"><dt>Air</dt><dd>Shaded, louvred chamber</dd><dd class="part">DHT22</dd></div>
+          <div class="ledger-row"><dt>Water level</dt><dd>Strip in the drawer</dd><dd class="part">Resistive</dd></div>
         </dl>
           </div>
         </div>
       </div>
       <div class="panel" role="tabpanel" id="panel-water" aria-labelledby="tab-water" tabindex="0" hidden>
         <div class="asym">
-          <div>
-            <h2 class="h2">Water goes to the roots.</h2>
-          <p class="copy">A small submersible pump sits in the reservoir. When the board calls for water it pushes a dose up a silicone tube to a drip stake in the soil, so water reaches the roots, not the leaves.</p>
-          <p class="copy">The water lives in a pull-out drawer at the front. Its smoked window shows the level, and it clicks open at two-thirds for refilling. The pump is switched by a MOSFET on the board, and the level sensor is checked before every dose, so it never runs dry.</p>
-          </div>
+          <div><h2 class="h2">Water to the roots.</h2><p class="big-copy" style="margin-top:24px">A small pump feeds a drip stake from the pull-out drawer.</p></div>
           <div>
         <div class="ledger-head tag"><span>Function</span><span>What it is</span><span>Part</span></div>
         <dl class="ledger">
-          <div class="ledger-row"><dt>Pump</dt><dd>Submersible, 3 V</dd><dd class="part">3 V DC</dd></div>
-          <div class="ledger-row"><dt>Driver</dt><dd>Switches the pump</dd><dd class="part">AO3400A</dd></div>
-          <div class="ledger-row"><dt>Delivery</dt><dd>Tube to a drip stake</dd><dd class="part">Silicone tube</dd></div>
-          <div class="ledger-row"><dt>Dry-run guard</dt><dd>Level checked before pumping</dd><dd class="part">Firmware</dd></div>
-          <div class="ledger-row"><dt>Water drawer</dt><dd>Pull-out, smoked window</dd><dd class="part">≈ 0.83 L</dd></div>
+          <div class="ledger-row"><dt>Drawer</dt><dd>Pull-out, smoked window</dd><dd class="part">≈ 0.83 L</dd></div>
+          <div class="ledger-row"><dt>Refill</dt><dd>Clicks open at two-thirds</dd><dd class="part">Front</dd></div>
+          <div class="ledger-row"><dt>Pump</dt><dd>Submersible, in the drawer</dd><dd class="part">3 V DC</dd></div>
+          <div class="ledger-row"><dt>Delivery</dt><dd>Tube to a drip stake</dd><dd class="part">Silicone</dd></div>
+          <div class="ledger-row"><dt>Dry-run guard</dt><dd>Level checked first</dd><dd class="part">Firmware</dd></div>
         </dl>
           </div>
         </div>
       </div>
       <div class="panel" role="tabpanel" id="panel-electronics" aria-labelledby="tab-electronics" tabindex="0" hidden>
         <div class="asym">
-          <div>
-            <h2 class="h2">One board runs everything.</h2>
-          <p class="copy">GreenGenius runs on its own circuit board, designed in KiCad around an ESP32 module. It reads every sensor, drives the pump and makes watering decisions locally.</p>
-          <p class="copy">It runs from 5 V over USB-C. The same port updates the firmware through a USB-to-serial chip. Two LEDs show power and status; reset and boot buttons sit on the board.</p>
-          </div>
+          <div><h2 class="h2">One board.</h2><p class="big-copy" style="margin-top:24px">Our own ESP32 board reads every sensor and runs the pump.</p></div>
           <div>
         <div class="ledger-head tag"><span>Function</span><span>What it is</span><span>Part</span></div>
         <dl class="ledger">
-          <div class="ledger-row"><dt>Processor</dt><dd>Dual-core, Wi-Fi and Bluetooth</dd><dd class="part">ESP32-WROOM-32E</dd></div>
-          <div class="ledger-row"><dt>Power</dt><dd>5 V over USB-C</dd><dd class="part">USB-C</dd></div>
-          <div class="ledger-row"><dt>Regulation</dt><dd>3.3 V supply</dd><dd class="part">AMS1117-3.3</dd></div>
-          <div class="ledger-row"><dt>Updates</dt><dd>Firmware over USB-C</dd><dd class="part">CH340C</dd></div>
-          <div class="ledger-row"><dt>Indicators</dt><dd>Power and status</dd><dd class="part">2 × LED</dd></div>
-          <div class="ledger-row"><dt>Controls</dt><dd>Reset and boot</dd><dd class="part">2 × switch</dd></div>
+          <div class="ledger-row"><dt>Processor</dt><dd>Wi-Fi and Bluetooth</dd><dd class="part">ESP32-WROOM-32E</dd></div>
+          <div class="ledger-row"><dt>Power</dt><dd>5 V, cable exits underneath</dd><dd class="part">USB-C</dd></div>
+          <div class="ledger-row"><dt>Updates</dt><dd>Over USB-C</dd><dd class="part">CH340C</dd></div>
+          <div class="ledger-row"><dt>Status</dt><dd>Light pipe at the front</dd><dd class="part">LED</dd></div>
+          <div class="ledger-row"><dt>Housing</dt><dd>Sealed bay in the base</dd><dd class="part">Gasket</dd></div>
         </dl>
           </div>
         </div>
       </div>
       <div class="panel" role="tabpanel" id="panel-software" aria-labelledby="tab-software" tabindex="0" hidden>
         <div class="asym">
-          <div>
-            <h2 class="h2">Plant knowledge, and an app.</h2>
-          <p class="copy">The care engine turns written care guidance into targets the pot can act on: moisture bands relative to each pot's own range, and light tiers in lux. Change the plant and the targets change with it.</p>
-          <p class="copy">The companion app is in development. It is being built to identify a plant from a photo, look up its care needs, show live readings and flag anything outside the plant's range.</p>
-          </div>
+          <div><h2 class="h2">Plant knowledge.</h2><p class="big-copy" style="margin-top:24px">Care advice becomes moisture and light targets. An app is in development.</p></div>
           <div>
         <div class="ledger-head tag"><span>Function</span><span>What it is</span><span>Part</span></div>
         <dl class="ledger">
-          <div class="ledger-row"><dt>Moisture model</dt><dd>Share of the pot's dry-to-wet range</dd><dd class="part">4 care bands</dd></div>
-          <div class="ledger-row"><dt>Light model</dt><dd>Midday tiers</dd><dd class="part">5 tiers, lux</dd></div>
-          <div class="ledger-row"><dt>Waterlogging</dt><dd>Over 100 for more than a day</dd><dd class="part">Alert</dd></div>
-          <div class="ledger-row"><dt>Companion app</dt><dd>Plant ID, care lookup, live readings</dd><dd class="part">In development</dd></div>
+          <div class="ledger-row"><dt>Moisture</dt><dd>Four care profiles</dd><dd class="part">Pot's own range</dd></div>
+          <div class="ledger-row"><dt>Light</dt><dd>Five midday tiers</dd><dd class="part">Lux</dd></div>
+          <div class="ledger-row"><dt>Alerts</dt><dd>Waterlogged, low water</dd><dd class="part">On device</dd></div>
+          <div class="ledger-row"><dt>App</dt><dd>Plant ID, live readings</dd><dd class="part">In development</dd></div>
         </dl>
           </div>
         </div>
@@ -143,28 +126,21 @@
 
   <section class="field f-cream" id="specs">
     <div class="wrap asym">
-      <div class="sticky-col">
-        <p class="eyebrow tag">Specifications</p>
-        <h2 class="h2">The full sheet.</h2>
-        <p class="copy" style="margin-top:24px">Electronics reflect the current board design. Enclosure figures are from the v3 prototype and may change.</p>
-      </div>
+      <div class="sticky-col"><p class="eyebrow tag">Specifications</p><h2 class="h2">The full sheet.</h2><p class="note">v3 prototype. May change.</p></div>
       <div>
         <div class="ledger-head tag"><span>Function</span><span>What it is</span><span>Part</span></div>
         <dl class="ledger">
-          <div class="ledger-row"><dt>Soil moisture</dt><dd>2 capacitive probes</dd><dd class="part">v1.2</dd></div>
-          <div class="ledger-row"><dt>Light</dt><dd>Light-dependent resistor</dd><dd class="part">LDR</dd></div>
-          <div class="ledger-row"><dt>Air</dt><dd>Temperature and humidity</dd><dd class="part">DHT-series</dd></div>
-          <div class="ledger-row"><dt>Water level</dt><dd>Resistive level strip</dd><dd class="part">In reservoir</dd></div>
-          <div class="ledger-row"><dt>Pump</dt><dd>3 V submersible, MOSFET-switched</dd><dd class="part">AO3400A</dd></div>
-          <div class="ledger-row"><dt>Delivery</dt><dd>Drip stake in the soil</dd><dd class="part">Silicone tube</dd></div>
-          <div class="ledger-row"><dt>Processor</dt><dd>Wi-Fi 2.4 GHz, Bluetooth</dd><dd class="part">ESP32-WROOM-32E</dd></div>
-          <div class="ledger-row"><dt>Power</dt><dd>5 V</dd><dd class="part">USB-C</dd></div>
-          <div class="ledger-row"><dt>Firmware updates</dt><dd>Over USB-C</dd><dd class="part">CH340C</dd></div>
-          <div class="ledger-row"><dt>Indicators</dt><dd>Power and status LEDs</dd><dd class="part">2 × LED</dd></div>
-          <div class="ledger-row"><dt>Size</dt><dd>Ø210 mm rim, Ø164 mm base, 234 mm tall</dd><dd class="part">v3</dd></div>
+          <div class="ledger-row"><dt>Size</dt><dd>Ø210 mm rim, 234 mm tall</dd><dd class="part">v3</dd></div>
           <div class="ledger-row"><dt>Soil</dt><dd>About 2.0 L</dd><dd class="part">v3</dd></div>
-          <div class="ledger-row"><dt>Water drawer</dt><dd>About 0.83 L, pull-out</dd><dd class="part">v3</dd></div>
-          <div class="ledger-row"><dt>Materials</dt><dd>PETG prototype; ASA for outdoor use</dd><dd class="part">3D printed</dd></div>
+          <div class="ledger-row"><dt>Water</dt><dd>About 0.83 L drawer</dd><dd class="part">v3</dd></div>
+          <div class="ledger-row"><dt>Soil sensing</dt><dd>2 capacitive probes</dd><dd class="part">v1.2</dd></div>
+          <div class="ledger-row"><dt>Light</dt><dd>LDR under translucent cap</dd><dd class="part">LDR</dd></div>
+          <div class="ledger-row"><dt>Air</dt><dd>Temperature, humidity</dd><dd class="part">DHT22</dd></div>
+          <div class="ledger-row"><dt>Water level</dt><dd>Strip in drawer</dd><dd class="part">Resistive</dd></div>
+          <div class="ledger-row"><dt>Pump</dt><dd>3 V submersible</dd><dd class="part">AO3400A</dd></div>
+          <div class="ledger-row"><dt>Processor</dt><dd>Wi-Fi, Bluetooth</dd><dd class="part">ESP32</dd></div>
+          <div class="ledger-row"><dt>Power</dt><dd>5 V</dd><dd class="part">USB-C</dd></div>
+          <div class="ledger-row"><dt>Materials</dt><dd>PETG now, ASA outdoors</dd><dd class="part">3D printed</dd></div>
         </dl>
       </div>
     </div>
@@ -172,8 +148,8 @@
 
   <section class="field f-terracotta">
     <div class="wrap lede-grid">
-      <h2 class="h1">See it as one <span class="serif">object.</span></h2>
-      <div><p class="big-copy">How the parts come together in the GreenGenius pot.</p><div class="row-actions"><a class="btn btn-solid" href="product.html">Explore the product <span class="arr" aria-hidden="true">→</span></a></div></div>
+      <h2 class="h1">See it in <span class="serif">3D.</span></h2>
+      <div><p class="big-copy">Every part, in place.</p><div class="row-actions"><a class="btn btn-solid" href="product.html">Explore the product <span class="arr" aria-hidden="true">→</span></a></div></div>
     </div>
   </section>
 </main>
@@ -200,6 +176,6 @@
     <div class="footer-base"><span>© <span data-year>2026</span> GreenGenius</span><span>In development. Specifications may change.</span></div>
   </div>
 </footer>
-<script src="js/site.js?v=4" defer></script>
+<script src="js/site.js?v=7" defer></script>
 </body>
 </html>

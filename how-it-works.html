@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>How It Works | GreenGenius</title>
-  <meta name="description" content="How GreenGenius reads its sensors, compares them with the plant's moisture band and waters from its reservoir only when needed.">
+  <meta name="description" content="How GreenGenius reads the soil, decides, and waters your plant from its own tank.">
   <link rel="canonical" href="https://greengeniusai.github.io/how-it-works.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="GreenGenius">
   <meta property="og:title" content="How It Works | GreenGenius">
-  <meta property="og:description" content="How GreenGenius reads its sensors, compares them with the plant's moisture band and waters from its reservoir only when needed.">
+  <meta property="og:description" content="How GreenGenius reads the soil, decides, and waters your plant from its own tank.">
   <meta property="og:url" content="https://greengeniusai.github.io/how-it-works.html">
   <meta property="og:image" content="https://greengeniusai.github.io/images/lifestyle/og.jpg">
   <meta name="twitter:card" content="summary_large_image">
@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Familjen+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@1&display=swap">
-  <link rel="stylesheet" href="css/styles.css?v=4">
+  <link rel="stylesheet" href="css/styles.css?v=7">
   <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
@@ -51,99 +51,93 @@
   <section class="page-hero f-blush">
     <div class="wrap">
       <div><p class="eyebrow tag">How It Works</p><h1 class="h1">Sense. Decide. <span class="serif">Water.</span></h1></div>
-      <p class="big-copy">One loop, running on the pot itself. Read the sensors, compare with the plant's needs, and water only when the numbers say so.</p>
+      <p class="big-copy">One loop, running on the pot itself.</p>
     </div>
   </section>
 
   <section class="field f-forest">
     <div class="wrap">
-      <div class="lede-grid">
-        <div><p class="eyebrow tag">The system</p><h2 class="h2">Every wire leads to one board.</h2></div>
-        <p class="big-copy">Decisions are made on the pot, so watering never depends on a phone or a Wi-Fi connection.</p>
+      <div class="sec-head">
+        <div><p class="eyebrow tag">The system</p><h2 class="h2">One board runs it all.</h2></div>
+        <p class="big-copy">No phone or Wi-Fi needed to keep a plant watered.</p>
       </div>
-      <div class="system" role="group" aria-label="System diagram: sensors feed the board, which drives the pump, status lights and app">
+      <div class="system" role="group" aria-label="System diagram: sensors feed the board, which drives the pump, status light and app">
         <div class="sys"><span class="tag">Inputs</span><h3>Sensors</h3>
-          <ul><li><span>Soil moisture</span><span>2 probes</span></li><li><span>Light</span><span>LDR</span></li><li><span>Temperature, humidity</span><span>DHT</span></li><li><span>Reservoir level</span><span>Level strip</span></li></ul></div>
+          <ul><li><span>Soil moisture</span><span>2 probes</span></li><li><span>Light</span><span>Under the cap</span></li><li><span>Air</span><span>Temp, humidity</span></li><li><span>Water level</span><span>In the drawer</span></li></ul></div>
         <div class="wire" aria-hidden="true"></div>
         <div class="sys sys--core"><span class="tag">Controller</span><h3>GreenGenius board</h3>
-          <ul><li><span>Processor</span><span>ESP32</span></li><li><span>Plant profile</span><span>Moisture band</span></li><li><span>Wireless</span><span>Wi-Fi, Bluetooth</span></li><li><span>Power</span><span>USB-C, 5 V</span></li></ul></div>
+          <ul><li><span>Processor</span><span>ESP32</span></li><li><span>Plant profile</span><span>Moisture band</span></li><li><span>Wireless</span><span>Wi-Fi, Bluetooth</span></li><li><span>Power</span><span>USB-C</span></li></ul></div>
         <div class="wire" aria-hidden="true"></div>
         <div class="sys"><span class="tag">Outputs</span><h3>Actions</h3>
-          <ul><li><span>Pump</span><span>To drip stake</span></li><li><span>Status lights</span><span>Power, status</span></li><li><span>Companion app</span><span>In development</span></li></ul></div>
+          <ul><li><span>Pump</span><span>To the roots</span></li><li><span>Status light</span><span>Front LED</span></li><li><span>App</span><span>In development</span></li></ul></div>
       </div>
     </div>
   </section>
 
   <section class="field f-paper">
     <div class="wrap">
-      <div class="lede-grid">
-        <div><p class="eyebrow tag">The cycle</p><h2 class="h2">Four steps, every time.</h2></div>
-        <p class="big-copy">The last step is the one most systems skip. Measuring again stops a slow-draining pot from getting a second dose it doesn't need.</p>
+      <div class="sec-head">
+        <div><p class="eyebrow tag">Every time</p><h2 class="h2">Four steps.</h2></div>
+        <p class="big-copy">The last one stops a slow-draining pot from being watered twice.</p>
       </div>
-      <ol class="cycle">
-        <li><span class="tag">Step 01</span><h3>Measure</h3><p>Both soil probes, plus light, temperature, humidity and the reservoir level.</p></li>
-        <li><span class="tag">Step 02</span><h3>Compare</h3><p>Moisture is placed within this pot's own range, dry to fully watered, and checked against the plant's band.</p></li>
-        <li><span class="tag">Step 03</span><h3>Water</h3><p>If moisture is below the band and the reservoir has water, the pump sends a dose to the roots.</p></li>
-        <li><span class="tag">Step 04</span><h3>Re-check</h3><p>The soil is measured again before anything else happens.</p></li>
-      </ol>
+      <div class="cards cards--4">
+        <div class="card f-sand"><b>01</b><div><h3>Measure</h3><p>Soil, light, air and water level.</p></div></div>
+        <div class="card f-blush"><b>02</b><div><h3>Compare</h3><p>Soil against the plant's range.</p></div></div>
+        <div class="card f-terracotta"><b>03</b><div><h3>Water</h3><p>A dose to the roots, if needed.</p></div></div>
+        <div class="card f-forest"><b>04</b><div><h3>Re-check</h3><p>Measure again before anything else.</p></div></div>
+      </div>
     </div>
   </section>
 
   <section class="field f-sand" id="profiles">
     <div class="wrap">
-      <div class="lede-grid">
-        <div><p class="eyebrow tag">Plant profiles</p><h2 class="h2">Care advice, turned into <span class="serif">numbers.</span></h2></div>
-        <p class="big-copy">Each care type maps to a moisture band, measured as a share of the pot's own range. The same profile works in any soil mix. Pick one.</p>
+      <div class="sec-head">
+        <div><p class="eyebrow tag">Care profiles</p><h2 class="h2">Plant advice, as <span class="serif">numbers.</span></h2></div>
+        <p class="big-copy">Pick a care type to see when the pot waters.</p>
       </div>
-      <div class="selector">
+      <div class="selector" style="margin-top:0">
         <div class="choices" role="radiogroup" aria-label="Care type">
           <button class="choice" role="radio" aria-checked="false" data-band data-lo="60" data-hi="70" data-vwc="40–45%" data-plants="Ferns, calathea, maranta"><strong>Keep evenly moist</strong><em>60–70</em></button>
-          <button class="choice" role="radio" aria-checked="true" data-band data-lo="40" data-hi="50" data-vwc="30–35%" data-plants="Most tropical foliage: monstera, philodendron, peace lily"><strong>Top inch dry</strong><em>40–50</em></button>
+          <button class="choice" role="radio" aria-checked="true" data-band data-lo="40" data-hi="50" data-vwc="30–35%" data-plants="Monstera, philodendron, peace lily"><strong>Top inch dry</strong><em>40–50</em></button>
           <button class="choice" role="radio" aria-checked="false" data-band data-lo="20" data-hi="30" data-vwc="20–25%" data-plants="Pothos, ZZ plant, snake plant"><strong>Mostly dry</strong><em>20–30</em></button>
-          <button class="choice" role="radio" aria-checked="false" data-band data-lo="0" data-hi="10" data-vwc="5–15%" data-plants="Cacti and succulents. Waits a few days after reaching the band."><strong>Completely dry</strong><em>0–10</em></button>
+          <button class="choice" role="radio" aria-checked="false" data-band data-lo="0" data-hi="10" data-vwc="5–15%" data-plants="Cacti and succulents"><strong>Completely dry</strong><em>0–10</em></button>
         </div>
         <div class="readout" aria-live="polite">
           <h3 id="bandName">Top inch dry</h3>
-          <p class="plants" id="bandPlants">Most tropical foliage: monstera, philodendron, peace lily</p>
+          <p class="plants" id="bandPlants">Monstera, philodendron, peace lily</p>
           <div class="meter"><div class="meter-band" id="bandRange" style="left:40%;width:10%"></div></div>
-          <div class="meter-scale"><span>0 dry</span><span>50</span><span>100 fully watered</span></div>
+          <div class="meter-scale"><span>0 dry</span><span>50</span><span>100 soaked</span></div>
           <dl>
-            <div><dt>Waters when moisture falls to</dt><dd id="bandWhen">40–50</dd></div>
-            <div><dt>Approx. water content, peat mix</dt><dd id="bandVwc">30–35%</dd></div>
+            <div><dt>Waters at</dt><dd id="bandWhen">40–50</dd></div>
+            <div><dt>Soil water, peat mix</dt><dd id="bandVwc">30–35%</dd></div>
           </dl>
-          <p class="note">Above 100 for more than a day counts as waterlogged, for every plant type.</p>
+          <p class="note">Scale is this pot's own range, from dry to fully watered.</p>
         </div>
       </div>
     </div>
   </section>
 
   <section class="field f-paper">
-    <div class="wrap asym">
-      <div>
-        <p class="eyebrow tag">Light</p>
-        <h2 class="h2">Light, sorted into tiers.</h2>
-        <p class="copy" style="margin-top:24px">The light sensor records brightness through the day. Midday readings are placed in the tiers used by indoor-plant guidance, so a plant in the wrong spot gets noticed.</p>
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow tag">Light</p><h2 class="h2">Is it in the right spot?</h2></div>
+        <p class="big-copy">Midday light, sorted into five tiers.</p>
       </div>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th scope="col">Tier</th><th scope="col">Midday lux</th><th scope="col">Typical position</th></tr></thead>
-          <tbody>
-            <tr><th scope="row"><span class="swatch" style="background:#3b3a36"></span>Too dark</th><td class="num">&lt; 270</td><td>Hallways, back of a room</td></tr>
-            <tr><th scope="row"><span class="swatch" style="background:#2b4d3a"></span>Low</th><td class="num">270–1,100</td><td>Several metres from a window</td></tr>
-            <tr><th scope="row"><span class="swatch" style="background:#7d9a6a"></span>Medium</th><td class="num">1,100–5,400</td><td>Near a window, no direct sun</td></tr>
-            <tr><th scope="row"><span class="swatch" style="background:#f0b23a"></span>Bright indirect</th><td class="num">5,400–10,800</td><td>Close to a bright window, sun filtered</td></tr>
-            <tr><th scope="row"><span class="swatch" style="background:#c2552e"></span>Direct</th><td class="num">&gt; 10,800</td><td>Four or more hours of sun on the leaves</td></tr>
-          </tbody>
-        </table>
-        <p class="note">Tiers follow UF/IFAS Gardening Solutions indoor light guidance, converted from foot-candles to lux.</p>
+      <div class="tiers">
+        <div class="tier f-ink"><h3>Too dark</h3><div><span class="lux">&lt; 270 lux</span><p>Hallways</p></div></div>
+        <div class="tier f-forest"><h3>Low</h3><div><span class="lux">270–1,100</span><p>Back of the room</p></div></div>
+        <div class="tier f-sand"><h3>Medium</h3><div><span class="lux">1,100–5,400</span><p>Near a window</p></div></div>
+        <div class="tier" style="background:var(--mustard)"><h3>Bright</h3><div><span class="lux">5,400–10,800</span><p>Filtered sun</p></div></div>
+        <div class="tier f-terracotta"><h3>Direct</h3><div><span class="lux">&gt; 10,800</span><p>4+ hours of sun</p></div></div>
       </div>
+      <p class="note">Tiers follow UF/IFAS indoor light guidance, converted to lux.</p>
     </div>
   </section>
 
   <section class="field f-forest">
     <div class="wrap lede-grid">
       <h2 class="h1">Now look <span class="serif">inside.</span></h2>
-      <div><p class="big-copy">Sensors, water system, electronics and software, with full specifications.</p><div class="row-actions"><a class="btn btn-solid" href="technology.html">View the technology <span class="arr" aria-hidden="true">→</span></a></div></div>
+      <div><p class="big-copy">Sensors, water, electronics and software.</p><div class="row-actions"><a class="btn btn-solid" href="technology.html">View the technology <span class="arr" aria-hidden="true">→</span></a></div></div>
     </div>
   </section>
 </main>
@@ -170,6 +164,6 @@
     <div class="footer-base"><span>© <span data-year>2026</span> GreenGenius</span><span>In development. Specifications may change.</span></div>
   </div>
 </footer>
-<script src="js/site.js?v=4" defer></script>
+<script src="js/site.js?v=7" defer></script>
 </body>
 </html>

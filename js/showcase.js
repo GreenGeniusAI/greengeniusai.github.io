@@ -64,6 +64,100 @@ async function loadModel(slot, THREE) {
   return group;
 }
 
+/* ---------- procedural plant ----------
+   The CAD has no plant. A seeded, stylised one (CAD mm, Z up) sits in a soil
+   disc so the product reads as a planter. Seeded so every visit looks the same. */
+function makePlant(THREE, soilZ, soilR) {
+  let seed = 7;
+  const rnd = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
+  const plant = new THREE.Group();
+  const soil = new THREE.Mesh(
+    new THREE.CircleGeometry(soilR, 64),
+    new THREE.MeshStandardMaterial({ color: 0x3a2618, roughness: 1 })
+  );
+  soil.position.z = soilZ;
+  plant.add(soil);
+
+  const leafGeo = (len, wid) => {
+    const sh = new THREE.Shape();
+    sh.moveTo(0, 0);
+    sh.bezierCurveTo(wid * 0.62, len * 0.06, wid * 0.6, len * 0.7, 0, len);
+    sh.bezierCurveTo(-wid * 0.6, len * 0.7, -wid * 0.62, len * 0.06, 0, 0);
+    const g = new THREE.ShapeGeometry(sh, 16);
+    const pos = g.attributes.position;
+    for (let i = 0; i < pos.count; i++) {
+      const x = pos.getX(i), t = pos.getY(i) / len;
+      pos.setZ(i, -0.3 * len * t * t + 0.2 * Math.abs(x) * (1 - 0.4 * t)); // droop + cup
+    }
+    g.computeVertexNormals();
+    return g;
+  };
+  const stemMat = new THREE.MeshStandardMaterial({ color: 0x4f7a32, roughness: 0.7 });
+  const up = new THREE.Vector3(0, 0, 1);
+  const base = new THREE.Vector3(-4, -6, soilZ);
+  const N = 13;
+  for (let k = 0; k < N; k++) {
+    const az = k * 2.39996 + rnd() * 0.5;
+    const h = 60 + (k / N) * 140 + rnd() * 25;
+    const reach = 30 + rnd() * 70 + (k % 3) * 12;
+    const tip = new THREE.Vector3(base.x + Math.cos(az) * reach, base.y + Math.sin(az) * reach, soilZ + h);
+    const mid = new THREE.Vector3(base.x + Math.cos(az) * reach * 0.25, base.y + Math.sin(az) * reach * 0.25, soilZ + h * 0.6);
+    const curve = new THREE.CatmullRomCurve3([base.clone(), mid, tip]);
+    plant.add(new THREE.Mesh(new THREE.TubeGeometry(curve, 16, 2.4, 6), stemMat));
+    const len = 85 + rnd() * 45, wid = len * (0.68 + rnd() * 0.1);
+    const col = new THREE.Color().setHSL(0.31 + rnd() * 0.04, 0.55 + rnd() * 0.15, 0.13 + rnd() * 0.06);
+    const leaf = new THREE.Mesh(leafGeo(len, wid), new THREE.MeshStandardMaterial({ color: col, roughness: 0.75, envMapIntensity: 0.35, side: THREE.DoubleSide }));
+    const dir = new THREE.Vector3(Math.cos(az), Math.sin(az), 0.35 + rnd() * 0.5).normalize();
+    const xAxis = new THREE.Vector3().crossVectors(dir, up).normalize();
+    const zAxis = new THREE.Vector3().crossVectors(xAxis, dir).normalize();
+    leaf.matrix.makeBasis(xAxis, dir, zAxis).setPosition(tip);
+    leaf.matrixAutoUpdate = false;
+    plant.add(leaf);
+  }
+  plant.name = "pot__plant";
+  return plant;
+}
+
+/* ---------- pointers ----------
+   <ol class="pointers"><li data-at="x,y,z" data-n="nx,ny,nz">Label</li>…</ol>
+   next to the slot. Anchors and normals are in CAD mm. A pointer hides when
+   its surface faces away from the camera, and flips side to stay in frame. */
+function setupPointers(THREE, slot, model) {
+  const list = slot.parentElement && slot.parentElement.querySelector(".pointers");
+  if (!list) return null;
+  const items = [...list.querySelectorAll("li")].map((li) => {
+    const [x, y, z] = li.dataset.at.split(",").map(Number);
+    const [nx, ny, nz] = (li.dataset.n || "0,0,1").split(",").map(Number);
+    li.innerHTML = `<span class="dot"></span><span class="lbl">${li.textContent}</span>`;
+    return { li, p: new THREE.Vector3(x, y, z), n: new THREE.Vector3(nx, ny, nz).normalize() };
+  });
+  const wp = new THREE.Vector3(), wn = new THREE.Vector3(), toCam = new THREE.Vector3();
+  const normalMatrix = new THREE.Matrix3();
+  return {
+    show() { list.classList.add("show"); },
+    update(camera, w, h) {
+      model.updateMatrixWorld();
+      normalMatrix.getNormalMatrix(model.matrixWorld);
+      for (const it of items) {
+        wp.copy(it.p).applyMatrix4(model.matrixWorld);
+        wn.copy(it.n).applyMatrix3(normalMatrix).normalize();
+        toCam.copy(camera.position).sub(wp).normalize();
+        const facing = wn.dot(toCam) > 0.12;
+        const v = wp.clone().project(camera);
+        const x = ((v.x + 1) / 2) * w, y = ((1 - v.y) / 2) * h;
+        it.li.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`;
+        it.li.classList.toggle("is-hidden", !facing);
+        // Put the label on the side with more room, and let it wrap to fit there.
+        const gap = w < 500 ? 36 : 58;
+        const room = { left: x - gap - 4, right: w - x - gap - 4 };
+        const side = room.left > room.right ? "left" : "right";
+        it.li.dataset.side = side;
+        it.li.lastChild.style.maxWidth = Math.max(room[side], 90) + "px";
+      }
+    },
+  };
+}
+
 async function mount(slot, THREE, OrbitControls, RoomEnvironment) {
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const content = await loadModel(slot, THREE);
@@ -87,11 +181,18 @@ async function mount(slot, THREE, OrbitControls, RoomEnvironment) {
   model.add(content);
   scene.add(model);
 
+  // Frame on the pot itself; a plant (added after) may rise out of frame a little.
   const box = new THREE.Box3().setFromObject(model);
   const size = box.getSize(new THREE.Vector3());
   const centre = box.getCenter(new THREE.Vector3());
+  const hasPlant = slot.dataset.modelPlant !== undefined;
+  if (hasPlant) centre.y += size.y * 0.28;     // lift the view so the leaves have room
   model.position.sub(centre);
-  const radius = size.length() / 2;
+  const radius = (size.length() / 2) * (hasPlant ? 1.22 : 1);
+  if (hasPlant) {
+    // Soil sits 8 mm under the v3 rim (Z 230); inner radius there is about 99 mm.
+    content.add(makePlant(THREE, 222, 98));
+  }
 
   const camera = new THREE.PerspectiveCamera(28, 1, radius / 50, radius * 20);
   const dist = (radius / Math.sin(THREE.MathUtils.degToRad(14))) * 0.92;
@@ -140,8 +241,11 @@ async function mount(slot, THREE, OrbitControls, RoomEnvironment) {
   };
   const INTRO_MS = 2500;
   let introStart = null;
+  const pointers = setupPointers(THREE, slot, model);
+  // With pointers, the model holds still after assembling so the labels stay readable.
+  const settle = () => { if (pointers) pointers.show(); else controls.autoRotate = !reduce; };
   if (playIntro) place(0);
-  else controls.autoRotate = !reduce;
+  else settle();
 
   const resize = () => {
     const { width, height } = slot.getBoundingClientRect();
@@ -160,12 +264,13 @@ async function mount(slot, THREE, OrbitControls, RoomEnvironment) {
       const t = now - introStart;
       place(t);
       if (t > INTRO_MS) {
-        controls.autoRotate = true;
+        settle();
         introStart = -1;                         // done; never replays
       }
     }
     controls.update();
     renderer.render(scene, camera);
+    if (pointers) pointers.update(camera, slot.clientWidth, slot.clientHeight);
     raf = visible ? requestAnimationFrame(loop) : 0;
   };
   new IntersectionObserver(([e]) => {

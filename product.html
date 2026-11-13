@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Our Product | GreenGenius</title>
-  <meta name="description" content="The GreenGenius pot: a reservoir, a pump and five sensors built in. In development.">
+  <meta name="description" content="The GreenGenius v3 pot: a water drawer, five sensors and a pump inside. In development.">
   <link rel="canonical" href="https://greengeniusai.github.io/product.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="GreenGenius">
   <meta property="og:title" content="Our Product | GreenGenius">
-  <meta property="og:description" content="The GreenGenius pot: a reservoir, a pump and five sensors built in. In development.">
+  <meta property="og:description" content="The GreenGenius v3 pot: a water drawer, five sensors and a pump inside. In development.">
   <meta property="og:url" content="https://greengeniusai.github.io/product.html">
   <meta property="og:image" content="https://greengeniusai.github.io/images/lifestyle/og.jpg">
   <meta name="twitter:card" content="summary_large_image">
@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Familjen+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@1&display=swap">
-  <link rel="stylesheet" href="css/styles.css?v=4">
+  <link rel="stylesheet" href="css/styles.css?v=7">
   <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
@@ -50,78 +50,81 @@
 <main id="main">
   <section class="reveal-stage f-forest">
     <div class="wrap">
-      <div class="stage-top tag"><span>Our Product</span><span>v3 prototype, shown in 3D</span></div>
+      <div class="stage-top tag"><span>Our Product</span><span>Drag to explore</span></div>
       <h1 class="stage-title display">
           <span class="line"><span>GreenGenius</span></span>
-          <span class="line"><span><span class="serif">pot.</span></span></span>
+          <span class="line"><span><span class="serif">v3.</span></span></span>
       </h1>
       <div class="stage-object">
         <div class="plinth" aria-hidden="true"></div>
-        <div class="model-slot" data-model-src="models/greengenius-v3.glb" data-model-intro="assemble" data-model-label="GreenGenius pot, interactive 3D model of the v3 design. Drag to rotate."></div>
+        <div class="model-slot" data-model-src="models/greengenius-v3.glb" data-model-intro="assemble" data-model-plant data-model-label="GreenGenius pot, interactive 3D model of the v3 design with a plant. Drag to rotate."></div>
+        <ol class="pointers" aria-label="Parts of the GreenGenius pot">
+          <li data-at="-40,-25,222" data-n="0,0,1">Soil probes in the root zone</li>
+          <li data-at="0,-90,100" data-n="0,-1,0">Water you can see</li>
+          <li data-at="40,-82,70" data-n="0.44,-0.9,0">Pull-out water drawer</li>
+          <li data-at="-62,-52,18" data-n="-0.77,-0.64,0">Sealed electronics bay</li>
+          <li data-at="-62,-74,170" data-n="-0.64,-0.77,0" data-minor>GreenGenius band</li>
+          <li data-at="0,72,234" data-n="0,0,1" data-minor>Light sensor under the cap</li>
+          <li data-at="-15,-84,16" data-n="0,-1,0" data-minor>Status light</li>
+        </ol>
         <p class="model-note tag">Loading 3D model</p>
       </div>
       <div class="stage-foot">
-        <p class="big-copy">A tapered pot on a pull-out water drawer, with five sensors and a pump built in. Plant it, choose its care type, top up the drawer when asked.</p>
-        <a class="btn btn-solid" href="#features">What it does <span class="arr" aria-hidden="true">→</span></a>
+        <p class="big-copy">A planter with a water drawer, five sensors and a pump inside.</p>
+        <a class="btn btn-solid" href="#features">See the details <span class="arr" aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
 
   <section class="field f-paper" id="features">
     <div class="wrap">
-      <div class="lede-grid">
-        <div><p class="eyebrow tag">What it does</p><h2 class="h2">Three jobs, handled by the pot.</h2></div>
-        <p class="big-copy">Each one runs on the device. None of them needs a phone to keep a plant alive.</p>
+      <div class="sec-head">
+        <div><p class="eyebrow tag">Details</p><h2 class="h2">Every part has a job.</h2></div>
       </div>
-      <div class="rows" style="margin-top:72px">
-        <div class="row"><span class="num">01</span><h3>Monitors the plant's conditions.</h3><p>Soil moisture from two probes, plus light, air temperature and humidity, measured throughout the day.</p></div>
-        <div class="row"><span class="num">02</span><h3>Waters from its own reservoir.</h3><p>When moisture drops below the plant's band, the pump delivers a dose to the roots, then the soil is measured again.</p></div>
-        <div class="row"><span class="num">03</span><h3>Looks after its water supply.</h3><p>The level sensor reports what's left, asks for a refill in time, and keeps the pump from running dry.</p></div>
+      <div class="bento">
+        <figure class="tile tile--img"><img src="images/lifestyle/kitchen.jpg" srcset="images/lifestyle/kitchen-sm.jpg 564w, images/lifestyle/kitchen.jpg 1128w" sizes="(max-width: 640px) 100vw, 50vw" width="1128" height="1400" alt="GreenGenius pot with basil on a kitchen counter" loading="lazy" decoding="async"><figcaption class="tag">Visualisation, v3 design</figcaption></figure>
+        <div class="tile f-terracotta"><h3>Smoked window</h3><p>See the water level at a glance.</p></div>
+        <div class="tile f-forest"><h3>Pull-out drawer</h3><p>Refill at the two-thirds click.</p></div>
+        <div class="tile f-sand"><h3>Light-sensor cap</h3><p>Reads daylight through a translucent cap.</p></div>
+        <div class="tile f-ink"><h3>Status light</h3><p>One LED at the front.</p></div>
+        <div class="tile tile--wide f-cream"><div class="num">2.0 L</div><p>of soil, and 0.83 L of water in the drawer.</p></div>
+        <div class="tile tile--wide f-blush"><h3>Silver band</h3><p>The GreenGenius mark, raised, hiding the seam between pot and base.</p></div>
       </div>
     </div>
   </section>
 
-
   <section class="field f-sand">
     <div class="wrap asym">
-      <figure class="shot"><img src="images/lifestyle/balcony.jpg" srcset="images/lifestyle/balcony-sm.jpg 564w, images/lifestyle/balcony.jpg 1128w" sizes="(max-width: 1080px) 100vw, 500px" width="1128" height="1400" alt="GreenGenius pot with rosemary on a city balcony at golden hour" loading="lazy" decoding="async"><figcaption class="tag"><span>Visualisation, v3 design</span><span>Balcony</span></figcaption></figure>
+      <figure class="shot"><img src="images/lifestyle/balcony.jpg" srcset="images/lifestyle/balcony-sm.jpg 564w, images/lifestyle/balcony.jpg 1128w" sizes="(max-width: 1080px) 100vw, 500px" width="1128" height="1400" alt="GreenGenius pot with rosemary on a balcony" loading="lazy" decoding="async"><figcaption class="tag"><span>Visualisation, v3 design</span><span>Balcony</span></figcaption></figure>
       <div>
         <p class="eyebrow tag">Indoors or out</p>
-        <h2 class="h2">Built for the balcony too.</h2>
-        <p class="copy" style="margin-top:24px">v3 was designed with outdoor use in mind. The electronics sit in a sealed bay, and everything that has to breathe or drain does it away from the rain.</p>
-        <dl class="ledger" style="margin-top:36px">
-          <div class="ledger-row"><dt>Drainage</dt><dd>Slots at the back of the pot, weep holes at the back of the shell</dd><dd class="part">Away from drawer</dd></div>
-          <div class="ledger-row"><dt>Power</dt><dd>USB-C cable exits underneath the base</dd><dd class="part">Out of the rain</dd></div>
-          <div class="ledger-row"><dt>Air sensor</dt><dd>Shaded chamber with louvres, outside the seal</dd><dd class="part">No direct sun</dd></div>
-          <div class="ledger-row"><dt>Material</dt><dd>PETG for prototypes, ASA for long-term outdoor use</dd><dd class="part">Same files</dd></div>
+        <h2 class="h2">Balcony-ready.</h2>
+        <dl class="mini">
+          <div><dt>Drainage</dt><dd>Out the back, away from the drawer</dd></div>
+          <div><dt>Power</dt><dd>Cable exits underneath</dd></div>
+          <div><dt>Air sensor</dt><dd>Shaded, louvred chamber</dd></div>
+          <div><dt>Material</dt><dd>ASA for long-term outdoor use</dd></div>
         </dl>
-        <p class="note">The bay seal has not been tested yet.</p>
+        <p class="note">Bay seal testing still to come.</p>
       </div>
     </div>
   </section>
 
-  <section class="duo">
-    <div class="f-terracotta">
-      <p class="eyebrow tag" style="color:var(--cream)">Setting up</p>
-      <h2 class="h2">Three steps, <span class="serif">once.</span></h2>
-      <ol>
-        <li><b>01</b><div><strong>Plant</strong><span>Pot the plant and push the probes and drip stake into the soil.</span></div></li>
-        <li><b>02</b><div><strong>Fill and power</strong><span>Fill the reservoir and connect USB-C power.</span></div></li>
-        <li><b>03</b><div><strong>Choose the care type</strong><span>The pot loads the matching moisture band.</span></div></li>
-      </ol>
-    </div>
-    <div class="f-cream">
-      <p class="eyebrow tag">Availability</p>
-      <h2 class="h2">In development.</h2>
-      <p class="copy" style="margin-top:24px">GreenGenius is not for sale yet. The circuit board is designed; the enclosure and software are underway. Pilot units come next.</p>
-      <div class="row-actions"><a class="text-link" href="about.html#progress">See our progress</a></div>
+  <section class="field f-paper">
+    <div class="wrap">
+      <div class="sec-head"><div><p class="eyebrow tag">Setup</p><h2 class="h2">Three steps, <span class="serif">once.</span></h2></div></div>
+      <div class="cards">
+        <div class="card f-blush"><b>01</b><div><h3>Plant it</h3><p>Probes and drip stake into the soil.</p></div></div>
+        <div class="card f-sand"><b>02</b><div><h3>Fill it</h3><p>Water in the drawer, USB-C in the back.</p></div></div>
+        <div class="card f-forest"><b>03</b><div><h3>Pick a profile</h3><p>Choose your plant's care type.</p></div></div>
+      </div>
     </div>
   </section>
 
-  <section class="field f-sand">
+  <section class="field f-terracotta">
     <div class="wrap lede-grid">
-      <h2 class="h1">Understand how it <span class="serif">decides.</span></h2>
-      <div><p class="big-copy">The watering cycle, plant profiles and light tiers, explained.</p><div class="row-actions"><a class="btn btn-solid" href="how-it-works.html">How it works <span class="arr" aria-hidden="true">→</span></a></div></div>
+      <h2 class="h1">In development. <span class="serif">Pilots next.</span></h2>
+      <div><p class="big-copy">Not for sale yet. Follow our progress.</p><div class="row-actions"><a class="btn btn-solid" href="about.html#progress">Our progress <span class="arr" aria-hidden="true">→</span></a><a class="text-link" href="contact.html">Get in touch</a></div></div>
     </div>
   </section>
 </main>
@@ -148,7 +151,7 @@
     <div class="footer-base"><span>© <span data-year>2026</span> GreenGenius</span><span>In development. Specifications may change.</span></div>
   </div>
 </footer>
-<script src="js/site.js?v=4" defer></script>
-<script type="module" src="js/showcase.js?v=4"></script>
+<script src="js/site.js?v=7" defer></script>
+<script type="module" src="js/showcase.js?v=7"></script>
 </body>
 </html>
