@@ -151,6 +151,75 @@
     choose(options.filter(function (o) { return o.getAttribute("aria-checked") === "true"; })[0] || options[0]);
   }
 
+  /* ---------------- Contact form ----------------
+     Posts to the form's action (a Formspree endpoint) as FormData and asks
+     for JSON back, so the visitor stays on the page. */
+  var contact = document.querySelector("form[data-contact]");
+  if (contact) {
+    var status = contact.querySelector(".form-status");
+    var submit = contact.querySelector('button[type="submit"]');
+    var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    var MESSAGES = {
+      name: "Please add your name.",
+      email: "Please enter a valid email address.",
+      topic: "Please choose one.",
+      message: "Please write a short message."
+    };
+    var setError = function (field, text) {
+      var err = document.getElementById(field.getAttribute("aria-describedby"));
+      field.setAttribute("aria-invalid", text ? "true" : "false");
+      if (err) err.textContent = text || "";
+    };
+    var validate = function (field) {
+      var v = field.value.trim();
+      var bad = field.required && !v ? MESSAGES[field.name] : "";
+      if (!bad && field.type === "email" && v && !EMAIL.test(v)) bad = MESSAGES.email;
+      setError(field, bad);
+      return !bad;
+    };
+    var fields = Array.prototype.slice.call(contact.querySelectorAll("[required]"));
+    fields.forEach(function (f) {
+      f.addEventListener("blur", function () { if (f.value.trim()) validate(f); });
+      f.addEventListener("input", function () { if (f.getAttribute("aria-invalid") === "true") validate(f); });
+    });
+    var say = function (text, state) { status.textContent = text; status.setAttribute("data-state", state || ""); };
+
+    contact.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var invalid = fields.filter(function (f) { return !validate(f); });
+      if (invalid.length) { invalid[0].focus(); say(""); return; }
+
+      // Bots fill the hidden field; humans can't see it.
+      if (contact.querySelector('[name="_gotcha"]').value) { contact.reset(); return; }
+
+      var endpoint = contact.getAttribute("action");
+      if (!endpoint) { say("The contact form isn't connected yet. Please try again later.", "error"); return; }
+
+      submit.disabled = true;
+      say("Sending…");
+      fetch(endpoint, { method: "POST", body: new FormData(contact), headers: { Accept: "application/json" } })
+        .then(function (res) {
+          return res.json().catch(function () { return {}; }).then(function (data) { return { ok: res.ok, data: data }; });
+        })
+        .then(function (r) {
+          if (!r.ok) {
+            var msg = r.data && r.data.errors && r.data.errors.map(function (x) { return x.message; }).join(" ");
+            throw new Error(msg || "");
+          }
+          var done = document.createElement("div");
+          done.className = "form-done";
+          done.setAttribute("tabindex", "-1");
+          done.innerHTML = '<h2 class="h2">Thank you.</h2><p class="big-copy">Your message is with us. We\'ll reply to the email address you gave.</p>';
+          contact.replaceWith(done);
+          done.focus();
+        })
+        .catch(function (err) {
+          say((err && err.message) || "Something went wrong sending your message. Please try again.", "error");
+          submit.disabled = false;
+        });
+    });
+  }
+
   /* ---------------- Footer year ---------------- */
   document.querySelectorAll("[data-year]").forEach(function (el) {
     el.textContent = new Date().getFullYear();
