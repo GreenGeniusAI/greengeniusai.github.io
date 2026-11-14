@@ -531,3 +531,8 @@ select.input { appearance: none; background-image: url("data:image/svg+xml,%3Csv
   .reveal-stage .wrap { grid-template-rows: auto auto minmax(340px, 50vh) auto; }
   .stage-object { min-height: 340px; }
 }
+
+/* logo mark */
+.brand { gap: 10px; }
+.brand-mark { width: 32px; height: 32px; flex: none; }
+.footer .brand-mark { width: 52px; height: 52px; }
